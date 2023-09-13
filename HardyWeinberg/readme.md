@@ -176,7 +176,7 @@ Nous allons analyser une jeu de données de microsatellites d'un espèce d'octoc
  <img width="385" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/b291a10b-dcba-4530-8c68-78fd0c65774e">
 <img width="200" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9469240c-1b07-4fe9-8aa9-7e3edb4e93bb">
 </p>
-
+ 
 *_Figure issue de Holland et al. 2017_*
 
 
