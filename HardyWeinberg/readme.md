@@ -378,7 +378,8 @@ Het_lobster_df = data.frame(Site = names(Ho_lobster), Ho = Ho_lobster, He = He_l
 Het_seafan_df = data.frame(Site = names(Ho_seafan), Ho = Ho_seafan, He = He_seafan) %>% melt(id.vars = "Site")
 ```
 
-# Custom theme for ggplot2
+Créer le "style" du graphique avec le package ggplot2
+```r
 custom_theme = theme(
   axis.text.x = element_text(size = 10, angle = 90, vjust = 0.5, face = "bold"),
   axis.text.y = element_text(size = 10),
@@ -394,8 +395,10 @@ custom_theme = theme(
 # Italic label
 hetlab.o = expression(italic("H")[o])
 hetlab.e = expression(italic("H")[e])
+```
 
-# Barplot pour l'h?t?rozygotie du homard
+Créer un histogramme  pour l'hétérozygotie du homard
+```r
 ggplot(data = Het_lobster_df, aes(x = Site, y = value, fill = variable))+
   geom_bar(stat = "identity", position = position_dodge(width = 0.6), colour = "black")+
   scale_y_continuous(expand = c(0,0), limits = c(0,0.50))+
@@ -403,8 +406,12 @@ ggplot(data = Het_lobster_df, aes(x = Site, y = value, fill = variable))+
   ylab("Heterozygosity")+
   ggtitle("European lobster")+
   custom_theme
+```
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/e657c153-dcbf-476d-a144-1d8b9405f399)
 
-# Barplot pour l'h?t?rozygotie du corail
+
+Créer un histogramme  pour l'hétérozygotie du corail
+```r
 ggplot(data = Het_seafan_df, aes(x = Site, y = value, fill = variable))+
   geom_bar(stat = "identity", position = "dodge", colour = "black")+
   scale_y_continuous(expand = c(0,0), limits = c(0,0.60), breaks = c(0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60))+
@@ -412,13 +419,18 @@ ggplot(data = Het_seafan_df, aes(x = Site, y = value, fill = variable))+
   ylab("Heterozygosity")+
   ggtitle("Pink sea fan")+
   custom_theme
+```
 
-Calculer le coefficient de consanguinit?
-Calculerr le FIS moyen par site
+## Calculer le coefficient de consanguinité
 
+###Calculer le FIS moyen par site
+
+```r
 # European lobster
 apply(basic_lobster$Fis, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
   round(digits = 3)
+```
+```r
 ##    Ale    Ber    Brd    Cor    Cro    Eye    Flo    Gul    Heb    Hel    Hoo 
 ##  0.057  0.003  0.003  0.021 -0.006 -0.004  0.005 -0.044 -0.034  0.013 -0.016 
 ##  Idr16  Idr17    Iom    Ios    Jer    Kav    Kil    Laz    Loo    Lyn    Lys 
@@ -427,16 +439,20 @@ apply(basic_lobster$Fis, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
 ##  0.040  0.023  0.017 -0.010 -0.004 -0.009  0.018 -0.017 -0.006 -0.013  0.006 
 ##    Sul    Tar    The    Tor    Tro    Ven    Vig 
 ##  0.033 -0.153  0.029  0.010  0.066 -0.024  0.013
-
+```
+```r
 # Pink sea fan
 apply(basic_seafan$Fis, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
   round(digits = 3)
+```
+```r
 ##   ArmI  ArmII ArmIII    Bla    Bov    Bre    Far    Fla    Han    Lao    Lio 
 ##  0.166  0.085  0.076 -0.006  0.075  0.039  0.116  0.014  0.042  0.064  0.029 
 ##    Lun    Men    Mew    Moh   PorI  PorII    Rag   RosI  RosII    Sko    Thu 
 ##  0.057  0.067  0.030  0.153  0.137  0.089  0.010  0.048  0.077  0.013  0.056 
 ##    Vol    Wtn 
 ##  0.057  0.058
+```
 
-
-        )
+Vous pouvez zssayer de le visualiser en utilisant la même méthode que pour l'hétérozygotie
+        
