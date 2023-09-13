@@ -34,32 +34,58 @@ install.packages("dartR")
 
 Ouverture des librairies
 ```r
-library(adegenet)
-library(poppr)
-library(dplyr)
-library(hierfstat)
-library(reshape2)
-library(ggplot2)
-library(RColorBrewer)
-library(scales)
+library("adegenet")
 library("poppr")
-library("dartR)
+library("dplyr")
+library("hierfstat")
+library("reshape2")
+library("ggplot2")
+library("RColorBrewer")
+library("scales")
+library("poppr")
+library("dartR")
 ```
 ## Données
 
-Nous allons analyser une jeu de données de microsatellites des 168 individus issus de 8 populations et génotypés à 10 microsatellites.
-Nous allons importer une fichier de format 'structure' en tant qu'objet "genind"
+Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 microsatellites.
+Nous allons importer une fichier de format 'csv' en tant qu'objet "genind"
 
-Vue du fichier structure:
+Vue du fichier csv:
 
+```
+Site,ID,Locus,Genotype
+Ale,Ale04,3441,GG
+Ale,Ale04,4173,NA
+Ale,Ale04,6157,NA
+Ale,Ale04,7502,NA
+Ale,Ale04,7892,TT
+Ale,Ale04,8953,TT
+Ale,Ale04,9441,NA
+...
+Ale,Ale16,29889,AA
+Ale,Ale16,30339,NA
+Ale,Ale16,31462,AA
+Ale,Ale16,31618,GG
+Ale,Ale16,31967,NA
+Ale,Ale16,31979,NA
+...
+
+Sar13,Sr5,3441,GG
+Sar13,Sr5,4173,CT
+Sar13,Sr5,6157,GC
+Sar13,Sr5,7502,TT
+Sar13,Sr5,7892,TT
+Sar13,Sr5,8953,GT
 ```
 
 
-#ouverture de fichier
-# Set the default working directory (change this to suit)
 
-setwd("C:/Users/marie/Documents/Deuxieme_cycleUQAR/")
+## ouverture de fichier
 
+Vérifier que les données sont bien représentées dans l'objet ```data.frame```
+
+```r
+#setwd("C:/Users/marie/Documents/Deuxieme_cycleUQAR/")
 lobster = read.csv("Lobster_SNP_Genotypes.csv")
 str(lobster)
 ## 'data.frame':    125280 obs. of  4 variables:
@@ -67,8 +93,9 @@ str(lobster)
 ##  $ ID      : chr  "Ale04" "Ale04" "Ale04" "Ale04" ...
 ##  $ Locus   : int  3441 4173 6157 7502 7892 8953 9441 11071 11183 11291 ...
 ##  $ Genotype: chr  "GG" NA NA NA ...
+```
 
-# Convertir format pour qu'il y ait une rang?e pour chaque individu et une colonne pour chaque locus ainsi qu'une colonne pour les identifiants et les sites.
+Convertir le ```data.frame```pour qu'un rang corresponde à un individu et une colenne à une locus, plus une colonne pour les ID et les noms de sites.
 
 lobster_wide = reshape(lobster, idvar = c("ID","Site"), timevar = "Locus", direction = "wide", sep = "")
 ## Warning in reshapeWide(data, idvar = idvar, timevar = timevar, varying =
