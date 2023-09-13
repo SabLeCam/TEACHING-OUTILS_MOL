@@ -1,4 +1,18 @@
-## 
+# TP DIVERSITE GENETIQUE ET ECART A HARDY WEINBERG
+
+(France Dufresne et Sabrina Le Cam d'après un document produit par Tom Jenkins source https://tomjenkins.netlify.app/tutorials/r-popgen-getting-started/)
+
+Dans ce TP, nous allons apprendre les bases de l'analyses de données de génétique des populations. Tout d'abord, explorer les données et calculer les différents indices de la diverisité génétique abordés en cours.
+
+Le jeu de données est issu de l'article suivant
+[Jenkins TL, Ellis CD, Triantafyllidis A, Stevens JR (2019). Single nucleotide polymorphisms reveal a genetic cline across the north‐east Atlantic and enable powerful population assignment in the European lobster. Evolutionary Applications 12, 1881–1899.](https://onlinelibrary.wiley.com/doi/10.1111/eva.12849)
+
+Calculer les indices de diversité génétique de bases:
+
+  - Polymorphisme/fréquence allèliques
+  - Diversité génetique (hétérozygotie  attendue et observée)
+  - Test d'écart à l'équilibre de Hardy Weinberg
+
 #' France Dufresne d'apr?s Tom Jenkins
 #' 02-2022
 #' 
