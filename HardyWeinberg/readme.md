@@ -213,7 +213,7 @@ tab(seafan_gen[loc = "Ever002"])[runif(3, 1, nInd(seafan_gen)), ]
 ## Han36           2           0           0           0           0
 ## Moh5            1           1           0           0           0
 ```
-Imprimer l'info de base de cet objet genind
+Imprimer l'info de base de cet objet ```genind```
 ```r
 seafan_gen
 ```
