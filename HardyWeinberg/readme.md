@@ -46,7 +46,7 @@ library("scales")
 library("poppr")
 library("dartR")
 ```
-## Données
+## Données de SNP sur les homards
 
 Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 microsatellites.
 Nous allons importer une fichier de format 'csv' en tant qu'objet "genind"
@@ -158,9 +158,12 @@ Explorer les différentes infos disponibles:
 lobster_gen@loc.n.all
 lobster_gen@pop
 ```
-Importer le fichier de g?notypes Microsatellites du corail
-Importer le fichier genepop et convertir en objet genind. V?rifiez que les g?notypes au locus  Ever002 pour trois individus choisis au hasard sont conformes.
 
+## Données de microsatellites sur les octocoraux
+
+Téléchagez le fichier de génotypes Microsatellites du corail (format genepop)
+Importer le fichier et le convertir en objet genind. Vérifiez que les génotypes au locus  Ever002 pour trois individus choisis au hasard sont conformes.
+```r
 seafan_gen = import2genind("Pinkseafan_13MicrosatLoci.gen", ncode = 3, quiet = TRUE)
 set.seed(1)
 tab(seafan_gen[loc = "Ever002"])[runif(3, 1, nInd(seafan_gen)), ]
@@ -168,10 +171,12 @@ tab(seafan_gen[loc = "Ever002"])[runif(3, 1, nInd(seafan_gen)), ]
 ## Far10           2           0           0           0           0
 ## Han36           2           0           0           0           0
 ## Moh5            1           1           0           0           0
-
-# Imprimer l'info de base de cet objet genind
-
+```
+Imprimer l'info de base de cet objet genind
+```r
 seafan_gen
+```
+```r
 ## /// GENIND OBJECT /////////
 ## 
 ##  // 877 individuals; 13 loci; 114 alleles; size: 478.2 Kb
@@ -185,20 +190,16 @@ seafan_gen
 ##    @type:  codom
 ##    @call: read.genepop(file = file, ncode = 3, quiet = quiet)
 ## 
-
-
-
-
-Mettre ? jour les identifiants des sites pour que les codes des sites soient utilis?s plut?t que les identifiants des individus
-
+```
+Mettre à jour les identifiants des sites pour que les codes des sites soient utilisés plutôt que les identifiants des individus
+```r
 # Use gsub to extract only letters from a vector
 popNames(seafan_gen) = gsub("[^a-zA-Z]", "", popNames(seafan_gen))
 popNames(seafan_gen)
 ##  [1] "ArmI"   "ArmII"  "ArmIII" "Bla"    "Bov"    "Bre"    "Far"    "Fla"   
 ##  [9] "Han"    "Lao"    "Lio"    "Lun"    "Men"    "Mew"    "Moh"    "PorI"  
 ## [17] "PorII"  "Rag"    "RosI"   "RosII"  "Sko"    "Thu"    "Vol"    "Wtn"
-
-
+```
 
 
 Imprimer le nombrer d'all?les par locus
