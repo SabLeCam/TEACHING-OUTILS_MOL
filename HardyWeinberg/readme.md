@@ -6,7 +6,7 @@ Dans ce TP, nous allons apprendre les bases de l'analyses de données de génét
 
 Le jeu de données est issu des articles suivants: 
 
-[Jenkins TL, Ellis CD, Triantafyllidis A, Stevens JR (2019). Single nucleotide polymorphisms reveal a genetic cline across the north‐east Atlantic and enable powerful population assignment in the European lobster. Evolutionary Applications 12, 1881–1899.](https://onlinelibrary.wiley.com/doi/10.1111/eva.12849)
+ [Jenkins TL, Ellis CD, Triantafyllidis A, Stevens JR (2019). Single nucleotide polymorphisms reveal a genetic cline across the north‐east Atlantic and enable powerful population assignment in the European lobster. Evolutionary Applications 12, 1881–1899.](https://onlinelibrary.wiley.com/doi/10.1111/eva.12849)
 
 [Holland LP, Jenkins TL, Stevens JR (2017). Contrasting patterns of population structure and gene flow facilitate exploration of connectivity in two widely distributed temperate octocorals. Heredity 119, 35–48.](https://www.nature.com/articles/hdy201714)
 
