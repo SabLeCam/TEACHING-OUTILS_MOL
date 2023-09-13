@@ -59,7 +59,7 @@ Nous allons analyser une jeu de données de SNP des 1278 individus (homards) iss
 
 *_Figure issue de Jenkins et al. 2019_*
 
-Nous allons importer une fichier de format 'csv' en tant qu'objet "genind"
+Nous allons importer un fichier de format 'csv' en tant qu'objet ```genind```
 
 Vue du fichier csv (NB: dans ce fichier il y a plus que 79 SNP):
 
@@ -115,7 +115,7 @@ lobster_wide = reshape(lobster, idvar = c("ID","Site"), timevar = "Locus", direc
 colnames(lobster_wide) = gsub("Genotype", "", colnames(lobster_wide))
 ```
 
-Utilisez seulement une partie des données de Jenkins et al. 2019
+Utiliser seulement une partie des données de Jenkins et al. 2019
 ```r
 # Subset genotypes
 snpgeno = lobster_wide[ , 3:ncol(lobster_wide)]
@@ -125,13 +125,13 @@ snps_to_remove = c("25580","32362","41521","53889","65376","8953","21197","15531
 snpgeno = snpgeno[ , !colnames(snpgeno) %in% snps_to_remove]
 ```
 
-Création de vecteurs pour les individus et les sites
+Créer des vecteurs pour les individus et les sites
 ```r
 ind = as.character(lobster_wide$ID) # individual ID
 site = as.character(lobster_wide$Site) # site ID
 ```
 
-Convertir ```data.frame``` en objet genind object. Vérifiez que les génotypes pour les cinq premiers individus et loci sont bons.
+Convertir ```data.frame``` en objet genind object. Vérifier que les génotypes pour les cinq premiers individus et loci sont bons.
 ```r
 lobster_gen = df2genind(snpgeno, ploidy = 2, ind.names = ind, pop = site, sep = "")
 lobster_gen$tab[1:5, 1:10]
@@ -142,7 +142,7 @@ lobster_gen$tab[1:5, 1:10]
 ## Ale08     NA     NA      0      2      2      0      2      0     NA     NA
 ## Ale13      2      0     NA     NA      2      0     NA     NA      2      0
 ```
-Imprimer information de bases pour les objets genind
+Imprimer les informations de bases pour les objets ```genind```
 
 ```r
 lobster_gen
@@ -171,7 +171,7 @@ lobster_gen@pop
 
 ## Données de microsatellites sur les octocoraux
 
-Nous allons analyser une jeu de données de microsatellites de 2 espèces d'octocoraux génotypés sur 13 et 8 microsatellites seloin les espèces.
+Nous allons analyser une jeu de données de microsatellites d'un espèce d'octocorail génotypées sur 13 microsatellites .
 <p float="left">
  <img width="385" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/b291a10b-dcba-4530-8c68-78fd0c65774e">
 <img width="200" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9469240c-1b07-4fe9-8aa9-7e3edb4e93bb">
@@ -179,8 +179,31 @@ Nous allons analyser une jeu de données de microsatellites de 2 espèces d'octo
 
 *_Figure issue de Holland et al. 2017_*
 
-Téléchager le fichier de génotypes Microsatellites du corail (format genepop)
-Importer le fichier et le convertir en objet genind. Vérifiez que les génotypes au locus  Ever002 pour trois individus choisis au hasard sont conformes.
+
+
+Fichier Genepop
+```
+Title line:													
+Ever001													
+Ever002													
+Ever003													
+Ever004													
+Ever005													
+Ever006													
+Ever007													
+Ever008													
+Ever010													
+Ever011													
+Ever012													
+Ever013													
+Ever014													
+Pop													
+ArmI_1,	254254	114114	174174	168168	235235	358376	226238	154154	245253	149149	210210	127127	317354
+ArmI_2,	254265	000000	174174	148171	235235	358367	238240	151151	253253	144144	210210	138170	333357
+ArmI_3,	237245	114114	174174	168168	235235	358361	230238	151151	253253	149149	000000	000000	354354
+ArmI_4,	245254	114114	174174	160168	235235	361367	238238	151151	253253	144149	000000
+```
+Importer le fichier  (format genepop) et le convertir en objet genind. Vérifiez que les génotypes au locus  Ever002 pour trois individus choisis au hasard sont conformes.
 ```r
 seafan_gen = import2genind("Pinkseafan_13MicrosatLoci.gen", ncode = 3, quiet = TRUE)
 set.seed(1)
@@ -291,7 +314,7 @@ private_alleles(seafan_gen) %>% apply(MARGIN = 1, FUN = sum)
 ##    Vol    Wtn 
 ##      0      0
 ```
-### la richesse all?lique moyenne par sites pour l'ensemble des loci
+### la richesse allèlique moyenne par sites pour l'ensemble des loci
 ```r
 allelic.richness(seafan_gen,min.n=NULL,diploid=TRUE)
 ```
@@ -304,7 +327,7 @@ allelic.richness(seafan_gen,min.n=NULL,diploid=TRUE)
 ##  2.767  3.032
 ```
 
-## Calculer l'hétérozygote par site
+## Calculer l'hétérozygotie par site
 ```r
 # Calculer les stats de base en utilisant le package hierfstat
 basic_lobster = basic.stats(lobster_gen, diploid = TRUE)
@@ -397,7 +420,7 @@ hetlab.o = expression(italic("H")[o])
 hetlab.e = expression(italic("H")[e])
 ```
 
-Créer un histogramme  pour l'hétérozygotie du homard
+Créer un histogramme pour l'hétérozygotie du homard
 ```r
 ggplot(data = Het_lobster_df, aes(x = Site, y = value, fill = variable))+
   geom_bar(stat = "identity", position = position_dodge(width = 0.6), colour = "black")+
@@ -410,7 +433,7 @@ ggplot(data = Het_lobster_df, aes(x = Site, y = value, fill = variable))+
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/e657c153-dcbf-476d-a144-1d8b9405f399)
 
 
-Créer un histogramme  pour l'hétérozygotie du corail
+Créer un histogramme pour l'hétérozygotie du corail
 ```r
 ggplot(data = Het_seafan_df, aes(x = Site, y = value, fill = variable))+
   geom_bar(stat = "identity", position = "dodge", colour = "black")+
