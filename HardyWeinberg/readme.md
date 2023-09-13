@@ -52,8 +52,12 @@ library("dartR")
 
 Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 microsatellites.
 
-![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/ff999420-630b-40f5-a0a5-e039078a6015)
+<p float="left">
+<img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/ff999420-630b-40f5-a0a5-e039078a6015">
+<img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d487deb6-48af-47c4-a47f-e5932d70df0d">
+</p>
 
+*_Figure issue de Jenkins et al. 2019_*
 
 Nous allons importer une fichier de format 'csv' en tant qu'objet "genind"
 
@@ -168,7 +172,10 @@ lobster_gen@pop
 ## Données de microsatellites sur les octocoraux
 
 Nous allons analyser une jeu de données de microsatellites de 2 espèces d'octocoraux génotypés sur 13 et 8 microsatellites seloin les espèces.
-![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/b291a10b-dcba-4530-8c68-78fd0c65774e)
+<p float="left">
+ <img width="385" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/b291a10b-dcba-4530-8c68-78fd0c65774e">
+<img width="200" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9469240c-1b07-4fe9-8aa9-7e3edb4e93bb">
+</p>
 
 *_Figure issue de Holland et al. 2017_*
 
@@ -212,10 +219,13 @@ popNames(seafan_gen)
 ## [17] "PorII"  "Rag"    "RosI"   "RosII"  "Sko"    "Thu"    "Vol"    "Wtn"
 ```
 
+## Statistiques globales
 
-Imprimer le nombrer d'all?les par locus
+### le nombre d'allèles par locus
+```r
 table(lobster_gen$loc.fac)
-## 
+```
+```
 ##  3441  4173  6157  7502  7892  9441 11071 11183 11291 12971 14047 14742 15109 
 ##     2     2     2     2     2     2     2     2     2     2     2     2     2 
 ## 15128 15435 15581 18512 18652 19266 19460 20354 23146 23447 23481 23677 23787 
@@ -230,16 +240,23 @@ table(lobster_gen$loc.fac)
 ##     2     2     2     2     2     2     2     2     2     2     2     2     2 
 ## 65576 
 ##     2
-
+```
+```r
 table(seafan_gen$loc.fac)
-## 
+```
+```
 ## Ever001 Ever002 Ever003 Ever004 Ever006 Ever007 Ever008 Ever010 Ever011 Ever013 
 ##      15       5       5      13      18      11       2       9       5      14 
 ## Ever014 
 ##       9
+```
 
-Imprimer la taille d'?chantillon
+### la taille d'échantillon
+```r
 summary(lobster_gen$pop)
+```
+```r
+
 ##   Ale   Ber   Brd   Cor   Cro   Eye   Flo   Gul   Heb   Hel   Hoo Idr16 Idr17 
 ##    28    33    36    32    35    26    36    35    36    35    36    32    29 
 ##   Iom   Ios   Jer   Kav   Kil   Laz   Loo   Lyn   Lys   Mul   Oos   Ork   Pad 
@@ -248,47 +265,58 @@ summary(lobster_gen$pop)
 ##    36     7    15    36    36    35    37    36     5    36    37    17    36 
 ##   Vig 
 ##    36
-
+```
+```r
 summary(seafan_gen$pop)
+```
+```r
+
 ##   ArmI  ArmII ArmIII    Bla    Bov    Bre    Far    Fla    Han    Lao    Lio 
 ##     26     43     39     29     38     43     44     23     36     36     22 
 ##    Lun    Men    Mew    Moh   PorI  PorII    Rag   RosI  RosII    Sko    Thu 
 ##     21     43     44     28     39     34     42     39     35     39     48 
 ##    Vol    Wtn 
 ##     23     43
+```
 
-Imprimer le nombre d'all?les priv?s par site par locus
-
+### le nombre d'allèles privés par site par locus
+```r
 private_alleles(seafan_gen) %>% apply(MARGIN = 1, FUN = sum)
+```
+```r
 ##   ArmI  ArmII ArmIII    Bla    Bov    Bre    Far    Fla    Han    Lao    Lio 
 ##      1      1      0      0      0      0      1      0      0      1      0 
 ##    Lun    Men    Mew    Moh   PorI  PorII    Rag   RosI  RosII    Sko    Thu 
 ##      1      1      1      0      1      4      0      2      1      0      2 
 ##    Vol    Wtn 
 ##      0      0
-
-
-Imprimer la richesse all?lique moyenne par sites pour l'ensemble des loci
-
+```
+### la richesse all?lique moyenne par sites pour l'ensemble des loci
+```r
 allelic.richness(seafan_gen,min.n=NULL,diploid=TRUE)
+```
+```r
 ##   ArmI  ArmII ArmIII    Bla    Bov    Bre    Far    Fla    Han    Lao    Lio 
 ##  2.771  2.720  2.748  2.635  2.784  2.837  2.807  2.698  3.030  2.809  2.957 
 ##    Lun    Men    Mew    Moh   PorI  PorII    Rag   RosI  RosII    Sko    Thu 
 ##  2.915  2.824  2.895  2.791  2.900  2.833  2.895  2.831  2.966  2.905  2.650 
 ##    Vol    Wtn 
 ##  2.767  3.032
+```
 
-Calculer l'h?t?rozygote par site
-
-# Calculer les stats de base en utilisant hierfstat
+## Calculer l'hétérozygote par site
+```r
+# Calculer les stats de base en utilisant le package hierfstat
 basic_lobster = basic.stats(lobster_gen, diploid = TRUE)
 basic_seafan = basic.stats(seafan_gen, diploid = TRUE)
-
-
-# H?t?rozygotie moyenne observ?e par site 
+```
+### Hétérozygotie moyenne observée par site 
+```r
 Ho_lobster = apply(basic_lobster$Ho, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
   round(digits = 2)
 Ho_lobster
+```
+```r
 ##   Ale   Ber   Brd   Cor   Cro   Eye   Flo   Gul   Heb   Hel   Hoo Idr16 Idr17 
 ##  0.32  0.36  0.37  0.38  0.37  0.37  0.35  0.38  0.39  0.35  0.39  0.39  0.39 
 ##   Iom   Ios   Jer   Kav   Kil   Laz   Loo   Lyn   Lys   Mul   Oos   Ork   Pad 
@@ -297,22 +325,28 @@ Ho_lobster
 ##  0.38  0.32  0.34  0.38  0.37  0.35  0.33  0.36  0.42  0.33  0.33  0.33  0.39 
 ##   Vig 
 ##  0.39
-
+```
+```r
 Ho_seafan = apply(basic_seafan$Ho, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
   round(digits = 2)
 Ho_seafan
+```
+```r
 ##   ArmI  ArmII ArmIII    Bla    Bov    Bre    Far    Fla    Han    Lao    Lio 
 ##   0.41   0.45   0.44   0.44   0.45   0.46   0.43   0.47   0.50   0.45   0.50 
 ##    Lun    Men    Mew    Moh   PorI  PorII    Rag   RosI  RosII    Sko    Thu 
 ##   0.49   0.47   0.51   0.41   0.44   0.45   0.51   0.49   0.49   0.53   0.40 
 ##    Vol    Wtn 
 ##   0.47   0.50
+```
 
-
-# H?t?rozygotie moyenne observ?e par site 
+### Hétérozygotie moyenne observée par site 
+```r
 He_lobster = apply(basic_lobster$Hs, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
   round(digits = 2)
 He_lobster
+```
+```r
 ##   Ale   Ber   Brd   Cor   Cro   Eye   Flo   Gul   Heb   Hel   Hoo Idr16 Idr17 
 ##  0.34  0.36  0.37  0.39  0.37  0.37  0.35  0.36  0.38  0.35  0.39  0.39  0.39 
 ##   Iom   Ios   Jer   Kav   Kil   Laz   Loo   Lyn   Lys   Mul   Oos   Ork   Pad 
@@ -321,15 +355,28 @@ He_lobster
 ##  0.38  0.32  0.35  0.37  0.37  0.35  0.33  0.37  0.36  0.34  0.33  0.36  0.38 
 ##   Vig 
 ##  0.39
+```
+```r
+He_seafan = apply(basic_seafan$Hs, MARGIN = 2, FUN = mean, na.rm = TRUE) %>% round(digits = 2)
+He_seafan
+```
+```r
+##   ArmI  ArmII ArmIII    Bla    Bov    Bre    Far    Fla    Han    Lao    Lio 
+##   0.48   0.47   0.48   0.44   0.50   0.49   0.48   0.47   0.54   0.50   0.52 
+##    Lun    Men    Mew    Moh   PorI  PorII    Rag   RosI  RosII    Sko    Thu 
+##   0.52   0.50   0.53   0.49   0.51   0.50   0.51   0.50   0.53   0.53   0.43 
+##    Vol    Wtn 
+##   0.49   0.54
+```
 
-He_seafan = apply(basic_seafan$Hs, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
 
-#Visualiser l'h?t?rozygote par site
-# Create a data.frame of site names, Ho and He and then convert to long format
-Het_lobster_df = data.frame(Site = names(Ho_lobster), Ho = Ho_lobster, He = He_lobster) %>%
-  melt(id.vars = "Site")
-Het_seafan_df = data.frame(Site = names(Ho_seafan), Ho = Ho_seafan, He = He_seafan) %>%
-  melt(id.vars = "Site")
+## Visualiser l'hétérozygotie par site
+
+Créer un ```data.frame```avec les noms de site, Ho et He et convertir en format "long"
+```r
+Het_lobster_df = data.frame(Site = names(Ho_lobster), Ho = Ho_lobster, He = He_lobster) %>% melt(id.vars = "Site")
+Het_seafan_df = data.frame(Site = names(Ho_seafan), Ho = Ho_seafan, He = He_seafan) %>% melt(id.vars = "Site")
+```
 
 # Custom theme for ggplot2
 custom_theme = theme(
