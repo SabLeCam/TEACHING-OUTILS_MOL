@@ -48,6 +48,17 @@ library("scales")
 library("poppr")
 library("dartR")
 ```
+
+définir le "working directory"
+ 1- en ligne de commande
+ ```r
+swd("chemin_vers_votre_dossier)
+```
+2- Dans R studio
+choisir **_session_** -->  **_set working directory_** --> **_choose working directory_**
+
+
+
 ## Données de SNP sur les homards
 
 Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 microsatellites.
@@ -169,7 +180,7 @@ lobster_gen@loc.n.all
 lobster_gen@pop
 ```
 
-## Données de microsatellites sur les octocoraux
+## Données de microsatellites sur les gorgones
 
 Nous allons analyser une jeu de données de microsatellites d'un espèce d'octocorail génotypées sur 13 microsatellites .
 <p float="left">
@@ -433,7 +444,7 @@ ggplot(data = Het_lobster_df, aes(x = Site, y = value, fill = variable))+
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/e657c153-dcbf-476d-a144-1d8b9405f399)
 
 
-Créer un histogramme pour l'hétérozygotie du corail
+Créer un histogramme pour l'hétérozygotie des gorgones
 ```r
 ggplot(data = Het_seafan_df, aes(x = Site, y = value, fill = variable))+
   geom_bar(stat = "identity", position = "dodge", colour = "black")+
@@ -443,6 +454,7 @@ ggplot(data = Het_seafan_df, aes(x = Site, y = value, fill = variable))+
   ggtitle("Pink sea fan")+
   custom_theme
 ```
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/2a095116-89b4-4033-abb2-2cb446516f2a)
 
 ## Calculer le coefficient de consanguinité
 
