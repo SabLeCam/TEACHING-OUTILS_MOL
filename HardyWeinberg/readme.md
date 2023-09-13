@@ -1,6 +1,6 @@
 # TP DIVERSITE GENETIQUE ET ECART A HARDY WEINBERG
 
-(Sabrina Le Cam et France Dufresne, d'après un document produit par Tom Jenkins source https://tomjenkins.netlify.app/tutorials/r-popgen-getting-started/)
+( France Dufresne et Sabrina Le Cam, d'après un document produit par Tom Jenkins source https://tomjenkins.netlify.app/tutorials/r-popgen-getting-started/)
 
 Dans ce TP, nous allons apprendre les bases de l'analyses de données de génétique des populations. Tout d'abord, explorer les données et calculer les différents indices de la diversité génétique abordés en cours.
 
