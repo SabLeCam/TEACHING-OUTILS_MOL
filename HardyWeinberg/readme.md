@@ -49,12 +49,13 @@ library("poppr")
 library("dartR")
 ```
 
-définir le "working directory"
+Définir le "working directory"
+
  1- en ligne de commande
  ```r
 swd("chemin_vers_votre_dossier)
 ```
-2- Dans R studio
+2- dans R studio
 choisir **_session_** -->  **_set working directory_** --> **_choose working directory_**
 
 
@@ -489,5 +490,5 @@ apply(basic_seafan$Fis, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
 ##  0.057  0.058
 ```
 
-Vous pouvez zssayer de le visualiser en utilisant la même méthode que pour l'hétérozygotie
+Vous pouvez essayer de le visualiser en utilisant la même méthode que pour l'hétérozygotie
         
