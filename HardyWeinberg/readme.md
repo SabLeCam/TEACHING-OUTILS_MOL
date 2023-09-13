@@ -13,15 +13,13 @@ Calculer les indices de diversité génétique de bases:
   - Diversité génetique (hétérozygotie  attendue et observée)
   - Test d'écart à l'équilibre de Hardy Weinberg
 
-#' France Dufresne d'apr?s Tom Jenkins
-#' 02-2022
-#' 
-#
 
-# INSTALLATIONS LOGICIELS
+ ## Ressources et packages nécessaires
 
+Nous allons effectuer ces analyses sous R. 
+Installez les packages suivants:
 
-#installation
+```r
 install.packages("adegenet")
 install.packages("dplyr")
 install.packages("hierfstat")
@@ -31,9 +29,11 @@ install.packages("(RColorBrewer")
 install.packages("scales")
 install.packages("poppr")
 install.packages("dartR")
+```
 
 
-# OUVERTURE LIBRAIRIES
+Ouverture des librairies
+```r
 library(adegenet)
 library(poppr)
 library(dplyr)
@@ -44,6 +44,16 @@ library(RColorBrewer)
 library(scales)
 library("poppr")
 library("dartR)
+```
+## Données
+
+Nous allons analyser une jeu de données de microsatellites des 168 individus issus de 8 populations et génotypés à 10 microsatellites.
+Nous allons importer une fichier de format 'structure' en tant qu'objet "genind"
+
+Vue du fichier structure:
+
+```
+
 
 #ouverture de fichier
 # Set the default working directory (change this to suit)
