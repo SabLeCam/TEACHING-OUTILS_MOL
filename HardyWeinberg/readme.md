@@ -97,7 +97,7 @@ str(lobster)
 ##  $ Genotype: chr  "GG" NA NA NA ...
 ```
 
-Convertir le ```data.frame```pour qu'un rang corresponde à un individu et une colonne à une locus, puis une colonne pour les ID et les noms de sites.
+Convertir le ```data.frame```"long" en "large" (wide) pour qu'un rang corresponde à un individu et une colonne à une locus, puis une colonne pour les ID et les noms de sites.
 ```r
 lobster_wide = reshape(lobster, idvar = c("ID","Site"), timevar = "Locus", direction = "wide", sep = "")
 ## Warning in reshapeWide(data, idvar = idvar, timevar = timevar, varying =
@@ -163,7 +163,12 @@ lobster_gen@pop
 
 ## Données de microsatellites sur les octocoraux
 
-Téléchagez le fichier de génotypes Microsatellites du corail (format genepop)
+Nous allons analyser une jeu de données de microsatellites de 2 espèces d'octocoraux génotypés sur 13 et 8 microsatellites seloin les espèces.
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/b291a10b-dcba-4530-8c68-78fd0c65774e)
+
+*_Figure issue de Holland et al. 2017_*
+
+Téléchager le fichier de génotypes Microsatellites du corail (format genepop)
 Importer le fichier et le convertir en objet genind. Vérifiez que les génotypes au locus  Ever002 pour trois individus choisis au hasard sont conformes.
 ```r
 seafan_gen = import2genind("Pinkseafan_13MicrosatLoci.gen", ncode = 3, quiet = TRUE)
