@@ -1,2 +1,2 @@
 # OUTILS_MOL
-Supports de Cours pour Les cours de génétique et d'outils moléculaires
+Supports de Cours pour le cours 'outils moléculaires'
