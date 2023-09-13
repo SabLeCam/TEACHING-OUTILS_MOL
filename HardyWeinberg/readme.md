@@ -503,7 +503,7 @@ estimer les Fis sur tous les locus pour chaque pop et faire la moyenne
 inbred_coef <- sapply (data_pop, inbreeding, res.type = "estimate") 
 Fis_Bar <- sapply (inbred_coef, mean)
 ```
-Transformer ces données en ```data.frame```et faire des boot_strap poour tester si les valeurs de Fis par pop s'écartent significativement de 0
+Transformer ces données en ```data.frame```et faire des boot_strap pour tester si les valeurs de Fis par pop s'écartent significativement de 0
 
 ```r
 Fis<-as.data.frame(Fis_Bar)
