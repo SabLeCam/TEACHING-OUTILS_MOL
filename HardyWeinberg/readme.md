@@ -10,7 +10,7 @@ Le jeu de données est issu des articles suivants:
 
 [Holland LP, Jenkins TL, Stevens JR (2017). Contrasting patterns of population structure and gene flow facilitate exploration of connectivity in two widely distributed temperate octocorals. Heredity 119, 35–48.](https://www.nature.com/articles/hdy201714)
 
-Calculer les indices de diversité génétique de bases:
+Calculer les indices de diversité génétique de base:
 
   - Polymorphisme/fréquence allèliques
   - Diversité génetique (hétérozygotie  attendue et observée)
@@ -51,6 +51,10 @@ library("dartR")
 ## Données de SNP sur les homards
 
 Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 microsatellites.
+
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/ff999420-630b-40f5-a0a5-e039078a6015)
+
+
 Nous allons importer une fichier de format 'csv' en tant qu'objet "genind"
 
 Vue du fichier csv (NB: dans ce fichier il y a plus que 79 SNP):
