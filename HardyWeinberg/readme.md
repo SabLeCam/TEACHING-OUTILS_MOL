@@ -50,7 +50,7 @@ library("dartR")
 Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 microsatellites.
 Nous allons importer une fichier de format 'csv' en tant qu'objet "genind"
 
-Vue du fichier csv:
+Vue du fichier csv (NB: dans ce fichier il y a plus que 79 SNP):
 
 ```
 Site,ID,Locus,Genotype
@@ -83,7 +83,6 @@ Sar13,Sr5,8953,GT
 ## ouverture de fichier
 
 Vérifier que les données sont bien représentées dans l'objet ```data.frame```
-
 ```r
 #setwd("C:/Users/marie/Documents/Deuxieme_cycleUQAR/")
 lobster = read.csv("Lobster_SNP_Genotypes.csv")
@@ -95,31 +94,34 @@ str(lobster)
 ##  $ Genotype: chr  "GG" NA NA NA ...
 ```
 
-Convertir le ```data.frame```pour qu'un rang corresponde à un individu et une colenne à une locus, plus une colonne pour les ID et les noms de sites.
-
+Convertir le ```data.frame```pour qu'un rang corresponde à un individu et une colonne à une locus, puis une colonne pour les ID et les noms de sites.
+```r
 lobster_wide = reshape(lobster, idvar = c("ID","Site"), timevar = "Locus", direction = "wide", sep = "")
 ## Warning in reshapeWide(data, idvar = idvar, timevar = timevar, varying =
 ## varying, : multiple rows match for Locus=3441: first taken
 
 # Remove "Genotype" from column names
 colnames(lobster_wide) = gsub("Genotype", "", colnames(lobster_wide))
+```
 
-
-# Utilisez seulement une partie des donn?es de Jenkins et al. 2019
-
+Utilisez seulement une partie des données de Jenkins et al. 2019
+```r
 # Subset genotypes
 snpgeno = lobster_wide[ , 3:ncol(lobster_wide)]
 
 # Keep only SNP loci used in Jenkins et al. 2019
 snps_to_remove = c("25580","32362","41521","53889","65376","8953","21197","15531","22740","28357","33066","51507","53052","53263","21880","22323","22365")
 snpgeno = snpgeno[ , !colnames(snpgeno) %in% snps_to_remove]
+```
 
-# Cr?ation de vecteurs pour les individus et les sites
+Création de vecteurs pour les individus et les sites
+```r
 ind = as.character(lobster_wide$ID) # individual ID
 site = as.character(lobster_wide$Site) # site ID
+```
 
-# Convertir data.frame en objet genind object. V?rifiez que les g?notypes pour les cinq premiers individus et loci sont bons.
-
+Convertir ```data.frame``` en objet genind object. Vérifiez que les génotypes pour les cinq premiers individus et loci sont bons.
+```r
 lobster_gen = df2genind(snpgeno, ploidy = 2, ind.names = ind, pop = site, sep = "")
 lobster_gen$tab[1:5, 1:10]
 ##       3441.G 3441.A 4173.C 4173.T 6157.G 6157.C 7502.T 7502.C 7892.T 7892.A
@@ -128,11 +130,14 @@ lobster_gen$tab[1:5, 1:10]
 ## Ale06     NA     NA      2      0      2      0     NA     NA      2      0
 ## Ale08     NA     NA      0      2      2      0      2      0     NA     NA
 ## Ale13      2      0     NA     NA      2      0     NA     NA      2      0
-
+```
 Imprimer information de bases pour les objets genind
 
-
+```r
 lobster_gen
+```
+```r
+
 ## /// GENIND OBJECT /////////
 ## 
 ##  // 1,305 individuals; 79 loci; 158 alleles; size: 945.1 Kb
@@ -146,9 +151,13 @@ lobster_gen
 ##    @type:  codom
 ##    @call: df2genind(X = snpgeno, sep = "", ind.names = ind, pop = site, 
 ##     ploidy = 2)
-
-
-# Importer le fichier de g?notypes Microsatellites du corail
+```
+Explorer les différentes infos disponibles:
+```r
+lobster_gen@loc.n.all
+lobster_gen@pop
+```
+Importer le fichier de g?notypes Microsatellites du corail
 Importer le fichier genepop et convertir en objet genind. V?rifiez que les g?notypes au locus  Ever002 pour trois individus choisis au hasard sont conformes.
 
 seafan_gen = import2genind("Pinkseafan_13MicrosatLoci.gen", ncode = 3, quiet = TRUE)
