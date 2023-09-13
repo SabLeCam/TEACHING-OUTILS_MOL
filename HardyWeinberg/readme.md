@@ -491,4 +491,34 @@ apply(basic_seafan$Fis, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
 ```
 
 Vous pouvez essayer de le visualiser en utilisant la même méthode que pour l'hétérozygotie
+
+Autre méthode pour estimer le FIS et tester si le valeurs s'écartent significativement des attendus d'Hardy Weinberg (FIS=0)
+
+Séparer les objets ```genind```par pop
+```
+data_pop<-seppop(lobster_gen)
+```
+estimer les Fis sur tous les locus pour chaque pop et faire la moyenne
+```r
+inbred_coef <- sapply (data_pop, inbreeding, res.type = "estimate") 
+Fis_Bar <- sapply (inbred_coef, mean)
+```
+Transformer ces données en ```data.frame```et faire des boot_strap poour tester si les valeurs de Fis par pop s'écartent significativement de 0
+
+```r
+Fis<-as.data.frame(Fis_Bar)
+set.seed(999)
+Fis_test<-boot.ppfis (dat = dataset, nboot =1000, quant = c (0.025,0.975), diploid = TRUE, dig=4)
+```
+Faire un graphique. Ici ci= valeurs d'intervalle de confiance
+```
+
+Fis_ci<-Fis_test$fis.ci
+
+ggplot(Fis, aes(x=rownames(Fis),y=Fis$Fis_Bar)) +        # ggplot2 plot with confidence intervals
+  geom_point() +
+  geom_errorbar(aes(ymin = Fis_ci$ll, ymax = Fis_ci$hl))
+  
+  ```
         
+Recommencer avec les données des gorgones
