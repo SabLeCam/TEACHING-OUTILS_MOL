@@ -515,6 +515,7 @@ Fis_ci<-Fis_test$fis.ci
 ggplot(Fis, aes(x=rownames(Fis),y=meanFis)) +        # ggplot2 plot with confidence intervals
   geom_point() + geom_errorbar(aes(ymin = Fis_ci$ll, ymax = Fis_ci$hl))
 ```
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/fdcb5d6d-5574-46de-819a-a623a411101d)
 
         
 Recommencer avec les données des gorgones
