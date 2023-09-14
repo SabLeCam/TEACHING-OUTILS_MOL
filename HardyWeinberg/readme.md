@@ -506,13 +506,13 @@ Fis_Bar <- sapply (inbred_coef, mean)
 Transformer ces données en ```data.frame```et faire des boot_strap pour tester si les valeurs de Fis par pop s'écartent significativement de 0
 
 ```r
-Fis<-as.data.frame(Fis_Bar)
+
 set.seed(999)
 Fis_test<-boot.ppfis (dat = lobster_gen, nboot =1000, quant = c (0.025,0.975), diploid = TRUE, dig=4)
 ```
 Faire un graphique. Ici ci= valeurs d'intervalle de confiance
-```
-
+```r
+Fis<-as.data.frame(Fis_Bar)
 Fis_ci<-Fis_test$fis.ci
 
 ggplot(Fis, aes(x=rownames(Fis),y=Fis$Fis_Bar)) +        # ggplot2 plot with confidence intervals
