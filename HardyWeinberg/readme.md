@@ -125,7 +125,11 @@ lobster_wide = reshape(lobster, idvar = c("ID","Site"), timevar = "Locus", direc
 
 # Remove "Genotype" from column names
 colnames(lobster_wide) = gsub("Genotype", "", colnames(lobster_wide))
+
+View(lobster_wide)
 ```
+![Image 2023-09-14 à 12 32](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/fc37b018-2069-4376-af8a-2e87c2c443fa)
+
 
 Utiliser seulement une partie des données de Jenkins et al. 2019
 ```r
