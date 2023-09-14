@@ -62,7 +62,7 @@ choisir **_session_** -->  **_set working directory_** --> **_choose working dir
 
 ## Données de SNP sur les homards
 
-Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 microsatellites.
+Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 SNP.
 
 <p float="left">
 <img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/ff999420-630b-40f5-a0a5-e039078a6015">
