@@ -502,18 +502,18 @@ Vous pouvez essayer de le visualiser en utilisant la même méthode que pour l'h
 Tester si le valeurs s'écartent significativement des attendus d'Hardy Weinberg (FIS=0)
 
 ```r
-#lobster.hfstat <- genind2hierfstat(lobster_gen)
 set.seed(999)
 Fis_test<-boot.ppfis (dat = lobster_gen, nboot =1000, quant = c (0.025,0.975), diploid = TRUE, dig=4)
 ```
 Faire un graphique. Ici ci= valeurs d'intervalle de confiance
 
 ```r
-Fis<-apply(basic_lobster$Fis, MARGIN = 2, FUN = mean, na.rm = TRUE)
+meanFis<-colMeans(basic_lobster$Fis, na.rm=TRUE)
+Fis<-as.data.frame(meanFis)
 Fis_ci<-Fis_test$fis.ci
 
-ggplot(Fis, aes(x=names(Fis),y=Fis)) +        # ggplot2 plot with confidence intervals
-geom_point() + geom_errorbar(aes(ymin = Fis_ci$ll, ymax = Fis_ci$hl))
+ggplot(Fis, aes(x=rownames(Fis),y=meanFis)) +        # ggplot2 plot with confidence intervals
+  geom_point() + geom_errorbar(aes(ymin = Fis_ci$ll, ymax = Fis_ci$hl))
 ```
 
         
