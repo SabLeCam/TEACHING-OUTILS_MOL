@@ -48,8 +48,8 @@ library("scales")
 library("poppr")
 library("dartR")
 ```
-
-Définir le "working directory"
+Télécharger le fichiers de données sur votre ordinateur dans un dossier TPHW que vous aurez créer.
+Définir le dossier TPHW comme "working directory", l'endroit où se trouve vos fichiers de données.
 
  1- en ligne de commande
  ```r
