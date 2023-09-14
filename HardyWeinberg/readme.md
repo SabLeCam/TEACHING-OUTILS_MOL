@@ -508,7 +508,7 @@ Transformer ces données en ```data.frame```et faire des boot_strap pour tester 
 ```r
 Fis<-as.data.frame(Fis_Bar)
 set.seed(999)
-Fis_test<-boot.ppfis (dat = dataset, nboot =1000, quant = c (0.025,0.975), diploid = TRUE, dig=4)
+Fis_test<-boot.ppfis (dat = lobster_gen, nboot =1000, quant = c (0.025,0.975), diploid = TRUE, dig=4)
 ```
 Faire un graphique. Ici ci= valeurs d'intervalle de confiance
 ```
