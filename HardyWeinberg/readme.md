@@ -386,7 +386,7 @@ Ho_seafan
 ##   0.47   0.50
 ```
 
-### Hétérozygotie moyenne observée par site 
+### Hétérozygotie moyenne attendue par site 
 ```r
 He_lobster = apply(basic_lobster$Hs, MARGIN = 2, FUN = mean, na.rm = TRUE) %>%
   round(digits = 2)
