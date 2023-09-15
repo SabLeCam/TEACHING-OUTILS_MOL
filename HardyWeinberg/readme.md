@@ -119,7 +119,7 @@ str(lobster)
 ##  $ Genotype: chr  "GG" NA NA NA ...
 ```
 
-Convertir le ```data.frame```"long" en "large" (wide) pour qu'un rang corresponde à un individu et une colonne à une locus, puis une colonne pour les ID et les noms de sites.
+Convertir le ```data.frame```"long" en "large" (wide) pour qu'un rang corresponde à un individu et une colonne à un locus, puis une colonne pour les ID et les noms de sites.
 ```r
 lobster_wide = reshape(lobster, idvar = c("ID","Site"), timevar = "Locus", direction = "wide", sep = "")
 ## Warning in reshapeWide(data, idvar = idvar, timevar = timevar, varying =
