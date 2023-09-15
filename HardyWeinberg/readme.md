@@ -64,6 +64,8 @@ choisir **_session_** -->  **_set working directory_** --> **_choose working dir
 
 Nous allons analyser une jeu de données de SNP des 1278 individus (homards) issus de 38 populations et génotypés à 79 SNP.
 
+Un SNP est la mutation d'un seul nucléotide à une position donnée, entre individus d'une même population. Les SNP sont généralement bialléliques, c'est-à-dire qu'il y a deux allèles par locus et un des deux allèles a une fréquence d'au moins 1%.
+
 <p float="left">
 <img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/ff999420-630b-40f5-a0a5-e039078a6015">
 <img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d487deb6-48af-47c4-a47f-e5932d70df0d">
@@ -190,7 +192,9 @@ lobster_gen@pop
 
 ## Données de microsatellites sur les gorgones
 
-Nous allons analyser une jeu de données de microsatellites d'un espèce d'octocorail génotypées sur 13 microsatellites .
+Nous allons analyser une jeu de données de microsatellites d'un espèce d'octocorail génotypées sur 13 microsatellites.
+
+Les microsatellites correspondent à des courtes séquences d’ADN répétées en tandem.La structure particulière de ces séquences les rend très susceptibles à la mutation. Les taux de mutation des séquences microsatellites seront souvent très élevés et, en conséquence, leur polymorphisme en populations naturelles sera lui aussi élevé.
 <p float="left">
  <img width="385" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/b291a10b-dcba-4530-8c68-78fd0c65774e">
 <img width="200" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9469240c-1b07-4fe9-8aa9-7e3edb4e93bb">
