@@ -50,11 +50,11 @@ Donnez les valeurs de couverture, la e-value, l’identité ainsi que le numéro
 ```
 
 
-## B) Détermination du barcode gap chez Aurelia, littorina, Zostera,Salvelinus (crédit photo wikipédia)
+## B) Détermination du barcode gap chez Aurelia, Poecile, Zostera,Salvelinus (crédit photo wikipédia)
 
 <p float="left">
 <img width="200" alt="image" src="https://user-images.githubusercontent.com/20643860/216440139-bd7a70a9-aadc-412e-b431-9d9a56e1deff.png">
-<img width="200" alt="image" src="https://user-images.githubusercontent.com/20643860/216439922-9999cbf2-6b6a-472a-aa2b-7696468522a1.png">
+<img width="200" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/e86ba1d7-5a3a-478e-a3f0-be08ce8f32d6">
 <img width="200" alt="image" src="https://user-images.githubusercontent.com/20643860/216440032-1f48bbd9-b05b-4f17-b176-341151bb1f0b.png">
 <img width="200" alt="image" src="https://user-images.githubusercontent.com/20643860/216440886-cbe1e785-8042-4154-9224-de0e8b6e712f.png">
 </p>
