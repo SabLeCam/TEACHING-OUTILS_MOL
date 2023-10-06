@@ -460,7 +460,7 @@ Créer un histogramme pour l'hétérozygotie des gorgones
 ```r
 ggplot(data = Het_seafan_df, aes(x = Site, y = value, fill = variable))+
   geom_bar(stat = "identity", position = "dodge", colour = "black")+
-  scale_y_continuous(expand = c(0,0), limits = c(0,0.60), breaks = c(0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60))+
+  scale_y_continuous(expand = c(0,0), limits = c(0,0.80), breaks = c(0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80))+
   scale_fill_manual(values = c("pink", "#bdbdbd"), labels = c(hetlab.o, hetlab.e))+
   ylab("Heterozygosity")+
   ggtitle("Pink sea fan")+
