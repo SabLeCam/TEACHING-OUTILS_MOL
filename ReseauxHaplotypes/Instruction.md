@@ -1,5 +1,7 @@
 # TP Les réseaux d’haplotypes
 
+(France Dufresne)
+
 <ins>Lecture</ins> : 
 <img width="387" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d7f80ce5-89c9-4a9f-99bf-10dce47fe80c">
 
@@ -27,7 +29,7 @@ Pour faire un réseau d’haplotypes, il faut d’abord produire un fichier qui 
 
 - Aller à : http://www.popart.otago.ac.nz/index.shtml puis Download
 - Choisir votre système d’exploitation puis télécharger le fichier.
-- Installer le fichier dans votre répertoire. Cliquer sur popart.exe pour lancer l’installation (sous windows).
+- Installer le fichier dans votre répertoire. Cliquer sur **popart.exe** pour lancer l’installation (sous windows).
 - Aller dans Network puis choisissez une méthode de construction. 
 - Le réseau apparait dans la fenêtre à droite. 
 
