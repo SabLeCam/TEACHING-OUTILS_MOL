@@ -1,17 +1,21 @@
 # TP Les réseaux d’haplotypes
 
-**Lecture** : 
-<img width="787" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d7f80ce5-89c9-4a9f-99bf-10dce47fe80c">
+<ins>Lecture</ins> : 
+<img width="387" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d7f80ce5-89c9-4a9f-99bf-10dce47fe80c">
 
 http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0001913 
 
-**Objectif**: 
+<ins>Objectif</ins>: 
 Faire un réseau d’haplotype. Un réseau d’haplotypes permet d’explorer les liens qui existent entre les différents haplotypes présents dans une même espèce. 
 Il existe différentes méthodes de construction des réseaux.
 
-**Installation** :
+<ins>Installation</ins> :
 Aller à l’adresse suivante : http://popart.otago.ac.nz/downloads.shtml 
 Télécharger *__popart__* selon votre système d’exploitation et installer le dans votre répertoire.
+
+<ins>Glossaire</ins> :
+Un haplotype= combinaison donnée de nucléotides/allèles polymorphes.
+Diversité haplotypique= probabilité que deux allèles tirés au hasard soient différents.
 
 ## Part I: Faire les haplotypes
 
@@ -31,7 +35,7 @@ Pour faire un réseau d’haplotypes, il faut d’abord produire un fichier qui 
 ## Partie III : Réseaux en fonction du site d’échantillonnage.
 
 **Pour** *__Gammarus oceanicus__* 
-![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/02ccbf69-e8a4-4f3d-8be8-42e23ede57e5)
+<img width="387" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/02ccbf69-e8a4-4f3d-8be8-42e23ede57e5">
 
 
 - Ouvrir le fichier  **Go_haplotype.nex** dans *__PopArt__*.
@@ -54,48 +58,45 @@ Pour faire un réseau d’haplotypes, il faut d’abord produire un fichier qui 
 7. Madeleine
 8. Hudson, Churchill, Kangiqsualujjuag
 
-## Partie IV : Réseaux en fonction du site d’échantillonnage.
+## Partie IV : Analyses statistiques
 Allez dans *__Statistics__* et cochez *__All stats__*
 
 Rapporter les résultats sous forme de tableau.
 
 Allez dans Statistics et cochez *__Amova__*
 - Vous devez définir des groupes (Amérique du Nord vs Europe pour *_Gammarus oceanicus_*). 
-- Rapporter les valeurs de Fst, Fsc et Fct pour les deux jeux de données.
+- Rapporter les valeurs de `Fst`, `Fsc` et `Fct` pour les deux jeux de données.
 
 
-*__Question Gammarus:__*
-*__1)	Que nous indique ces réseaux d’haplotype sur l’impact des glaciations sur cette espèce des deux côtés de l’Atlantique ? Ou étaient les refuges glaciaires ?
-2)	 Pouvez-vous formuler une hypothèse sur l’origine des haplotypes présents à Savalbard, au Groenland et à Churchill nord du Manitoba ?__*
+> Question Gammarus:
+> 1. Que nous indique ces réseaux d’haplotype sur l’impact des glaciations sur cette espèce des deux côtés de l’Atlantique ? Ou étaient les refuges glaciaires ?
+> 2. Pouvez-vous formuler une hypothèse sur l’origine des haplotypes présents à Savalbard, au Groenland et à Churchill nord du Manitoba ?
 
 
-Poursuivez le TP pour les deux espèces arctiques
-*_Themisto libellula_* 
-![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/804fb46f-ac1d-44ec-8459-822633eee03e)
-*_Themisto abyssorum_*
-![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/4acad8f2-89d4-4a82-8b66-0d9fa8c3bbdc)
+### Poursuivez le TP pour les deux espèces arctiques: *_Themisto libellula_* (gauche) et *_Themisto abyssorum_* (droite)
+<p float="left">
+  <img width="387" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/804fb46f-ac1d-44ec-8459-822633eee03e">
+  <img width="387" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/4acad8f2-89d4-4a82-8b66-0d9fa8c3bbdc">
+  </p>
 
 
 Pour *_Themisto libellula_*, ouvrez le fichier tlmt597.nex et pour *_Themisto abyssorum_*, ouvrez le fichier **ta498.nex**.
-Allez dans ‘Statistics’ et cochez ‘All stats’
+Allez dans *__Statistics_** et cochez *__All stats__*
 Rapporter les résultats sous forme de tableau pour chaque espèce
 
-Allez dans Statistics et cochez ‘AMOVA’
+Allez dans *__Statistics__* et cochez *__AMOVA__*
 -Explorer les différents groupements qui maximisent la séparation des groupes pour chacune des espèces). 
--Rapporter les valeurs de Fst, Fsc et Fct pour les deux jeux de données.
-Cochez D de Tajima et rapporter les valeurs
+-Rapporter les valeurs de  `Fst`, `Fsc` et `Fct` pour les deux jeux de données.
+Cochez `D de Tajima` et rapporter les valeurs
 
-
-Allez dans ‘Statistics’ et cochez ‘All stats’
+Allez dans *__Statistics__* et cochez *__All stats__*
 Rapporter les résultats sous forme de tableau.
-Cochez D de Tajima et rapporter les valeurs
+Cochez `D de Tajima` et rapporter les valeurs
 
 
-$_Question Themisto
-1)	Quelle espèce possède la plus grande diversité génétique ?
-2)	Est-ce-que les glaciations ont affecté les deux espèces de la même façon ? Quel scénario de recolonisation postglaciaire peut être envisagé pour ces espèces ?_*
+> Question Themisto:
+> 1. Quelle espèce possède la plus grande diversité génétique ?
+> 2. Est-ce-que les glaciations ont affecté les deux espèces de la même façon ? Quel scénario de recolonisation postglaciaire peut être envisagé pour ces espèces ?
 
-3)	Glossaire:
-Un haplotype= combinaison donnée de nucléotides/allèles polymorphes.
-Diversité haplotypique= probabilité que deux allèles tirés au hasard soient différents.
+
 
