@@ -45,10 +45,19 @@ Pour faire un réseau d’haplotypes, il faut d’abord produire un fichier qui 
 - Le réseau apparait dans la fenêtre à droite. 
 - Vous pouvez modifier les couleurs ainsi que la police en cliquant sur les points de couleurs ou en allant dans **Edit**.
 - Exporter le graphique en allant dans **File** puis **Export graphics**. Vous pouvez choisir le format svg, png ou pdf. Par commodité préférez l’option pdf.
-- Vous pouvez aussi visualiser la répartition de vos haplotypes en fonction du site d’échantillonnage en allant dans View puis switch to map view. Vous pouvez ajouter des légendes (échelle, rose des vents à votre carte en faisant clic droit puis Info boxes.
+
+<p align="center">
+  <img width="587" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/97b140bb-abcf-4574-b7a0-559fd2ab9844">
+  </p>
+
+- Vous pouvez aussi visualiser la répartition de vos haplotypes en fonction du site d’échantillonnage en allant dans **View** puis switch to **map view**. Vous pouvez ajouter des légendes (échelle, rose des vents à votre carte en faisant clic droit puis **Info boxes**.
 - Vous pouvez exporter de la même manière que le réseau.
 
-*_Note : Comme il y a plusieurs sites provenant de la même région, vous pourrez recolorer les haplotypes de ces sites avec la même couleur._*
+ <p align="center">
+  <img width="587" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/da2aad71-908e-4fe7-8ea3-fe5bdd61e091">
+  </p> 
+
+> Note : Comme il y a plusieurs sites provenant de la même région, vous pourrez recolorer les haplotypes de ces sites avec la même couleur.
 
 **Liste pour les couleurs**:
 1. Labrador, Northern Peninsula, Bonavista, Fogo Island, Fogo Island, Avalon Peninsula
