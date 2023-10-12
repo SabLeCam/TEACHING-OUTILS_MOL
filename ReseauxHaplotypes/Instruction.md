@@ -19,7 +19,7 @@ Télécharger *__popart__* selon votre système d’exploitation et installer le
 Un haplotype= combinaison donnée de nucléotides/allèles polymorphes.
 Diversité haplotypique= probabilité que deux allèles tirés au hasard soient différents.
 
-## Part I: Faire les haplotypes
+## Part I: Faire les haplotypes  (déjà fait pour vous)
 
 Pour faire un réseau d’haplotypes, il faut d’abord produire un fichier qui contient l’ensemble de nos séquences dans un format particulier (format fasta voir exemple). Ensuite nous devons aligner les séquences, c’est-à-dire les mettre en ordre selon les différentes positions sur l’ADN. Plusieurs logiciels sont utilisés pour les alignements (*__bioedit__* et *__mega__* qui sont déjà installés sur les ordinateurs). Une fois que les séquences sont alignées, il faut produire un fichier (format *_nexus_*) qui servira à produire les réseaux d’haplotypes. Ces fichiers sont produits par le logiciel *__DNAsp__* (http://www.ub.edu/dnasp/) qui regroupe les séquences identiques ensemble afin d’établir la fréquence de chaque haplotype. Ce fichier doit également inclure des coordonnées GPS pour chaque séquence afin de pouvoir placer la localisation de chaque groupe de séquence sur une carte. 
 
@@ -30,7 +30,9 @@ Pour faire un réseau d’haplotypes, il faut d’abord produire un fichier qui 
 - Aller à : http://www.popart.otago.ac.nz/index.shtml puis Download
 - Choisir votre système d’exploitation puis télécharger le fichier.
 - Installer le fichier dans votre répertoire. Cliquer sur **popart.exe** pour lancer l’installation (sous windows).
-- Aller dans Network puis choisissez une méthode de construction. 
+- Lorsque vous ouvrez le fichier, il y aura un message d'erreurs à propos de caractères inconnus, cliquez ok.
+- Aller dans Network puis choisissez une méthode de construction (TCS network).
+- Ils demandent d'inscrire un chiffre epsilon, entrez 33
 - Le réseau apparait dans la fenêtre à droite. 
 
 
