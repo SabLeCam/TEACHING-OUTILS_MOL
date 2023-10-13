@@ -62,14 +62,12 @@ Pour faire un réseau d’haplotypes, il faut d’abord produire un fichier qui 
 > Note : Comme il y a plusieurs sites provenant de la même région, vous pourrez recolorer les haplotypes de ces sites avec la même couleur.
 
 **Liste pour les couleurs**:
-1. Labrador, Northern Peninsula, Bonavista, Fogo Island, Fogo Island, Avalon Peninsula
-2. Westmorland, Albert, St. John, Restigouche, Westmorland, Gloucester
-3. Churchill, Hudson
-4. Cumberland, Richmond, Pictou, Cumberland, Guysborough, Antigonish, Inverness, Halifax, Richmond
-5. Prince, Kings, Queens County
-6. Cote-Nord, Gaspesie, Charlevoix, Bas-Saint-Laurent
-7. Madeleine
-8. Hudson, Churchill, Kangiqsualujjuag
+1. Labrador, Northern Peninsula, Bonavista, Fogo Island, Avalon Peninsula, Bonne Bay, Saint_John
+2. Westmorland, Albert, St. John, Restigouche, Westmorland, Gloucester, Cumberland, Richmond, Pictou, Guysborough, Antigonish, Inverness, Halifax, queens, Inverness, twillingate, Northumberland, Richmond
+3. Cote-Nord, Gaspesie, Charlevoix, Bas-Saint-Laurent, Madeleine
+4. Hudson, Churchill, Kangiqsualujjuag
+9. Norvège, Pologne, Suède, Baltique, Écosse, Mer Nord, Mer_Blanche,
+10. Faroe, Groenland, Svalbard, Islande
 
 ## Partie IV : Analyses statistiques
 Allez dans *__Statistics__* et cochez *__All stats__*
