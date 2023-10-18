@@ -2,7 +2,7 @@
 
 ( France Dufresne et Sabrina Le Cam, d'après un document produit par Tom Jenkins source https://tomjenkins.netlify.app/tutorials/r-popgen-getting-started/)
 
- ## Ressources et packages nécessaires
+## Ressources et packages nécessaires
 
 Nous allons effectuer ces analyses sous R. 
 Installez les packages suivants:
@@ -40,41 +40,148 @@ library("LEA")
 ```
 
 Nous repartons du jeux de données de l'étude de [Jenkins et al. 2019](https://onlinelibrary.wiley.com/doi/10.1111/eva.12849) sur le Homard bleu avec lequel nous avons fait le [TP Hardy Weinberg](https://github.com/SabLeCam/OUTILS_MOL/tree/main/HardyWeinberg)
-Récupérer les données (RAPPEL)
+Récupérer les données en suivant le début du [TPHW](https://github.com/SabLeCam/OUTILS_MOL/blob/main/HardyWeinberg/readme.md) jusqu'à l'étape suivante:
 
 ```r
-#setwd("C:/Users/marie/Documents/Deuxieme_cycleUQAR/")
-lobster = read.csv("Lobster_SNP_Genotypes.csv")
+lobster_gen
 ```
- ```r
- dataset.hfstat <- genind2hierfstat(dataset)
-basicstat <- basic.stats(dataset, diploid = TRUE, digits = 2) 
-names(basicstat)
+```r
+lobster_gen_sub = popsub(lobster_gen, sublist = c("Ale","Ber","Brd","Pad","Sar17","Vig"))
 ```
-
+```r
+ dataset.hfstat <- genind2hierfstat(lobster_gen_sub)
+```
 On compare maintenant les patrons de diversité génétique entre les populations par rapport à la diversité globale.
 
 ## Matrice de Fst par paire de population (estimateur du Fst de Weir de Cockerham(1984)
 
 ```r
-mat.obs <- pairwise.WCfst(dataset.hfstat)
+lobster_fst = genet.dist(lobster_gen_sub, method = "WC84") %>% round(digits = 3)
+lobster_fst
 ```
 Représenter cette matice avec une heatmap
+
 ```r
-melted_matobs <- melt(mat.obs, na.rm = TRUE)
+#garder que la partie suppérieure de la matrice
+  get_upper_tri <- function(cormat){
+    cormat[lower.tri(cormat)]<- NA
+    return(cormat)
+  }
+mat.obs_upper <-get_upper_tri(mat.obs)
+```
+```r
+melted_matobs <- melt(mat.obs_upper, na.rm = TRUE)
 colnames(melted_matobs)<-c("pop1","pop2","value")
 
 ggheatmap <- ggplot2::ggplot(melted_matobs, aes(pop1, pop2, fill = value)) +
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "blue", high = "red",  
-                       midpoint = 0.15, limit = c(0,0.3), space = "Lab" ) +
+                       midpoint = 0.075, limit = c(0,0.15), space = "Lab" ) +
+  geom_text(aes(label = round(value,digits = 3)), color="black", size = 3)+
   theme_minimal()+ # minimal theme
   theme(axis.text.x = element_text(angle = 45, vjust = 1, 
                                    size = 12, hjust = 1))
 ggheatmap
 ```
+<p float="left">
+ <img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/a44d655f-81bb-4b59-b665-4df44f844f7f.png">
+ <img width="450" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/8710515c-b3ac-482f-a86f-84e643239c01.png">
+</p>
 
-## Analyses PCA (principle components analysis) sur le jeux de homard
+## Analyses ACP (analyse en composantes principales)
+
+On replace les données manquantes par la moyenne des fréquences allèliques
+```r
+x = tab(lobster_gen_sub, NA.method = "mean")
+```
+
+On réalise l'ACP
+```r
+pca<-dudi.pca(x, scannf = FALSE, scale = FALSE, nf = 3)
+```
+En représentant les vecteurs eigen, on peut analyser quel pourcentage de la variance génétique est expliqué par chacun des axes
+```r
+percent = pca1$eig/sum(pca1$eig)*100
+barplot(percent, ylab = "Genetic variance explained by eigenvectors (%)", ylim = c(0,12),
+        names.arg = round(percent, 1))
+```
+
+On représente graphiquement les résultats de l'ACP
+```r
+
+li<-pca$scores
+dfpca<-data.frame(a1=li[,1],a2=li[,2],pop=lobster_gen_sub$pop,ind=rownames(pca$scores))
+
+centroids <- aggregate(cbind(a1,a2)~pop,data=dfpca,mean)
+
+gpca<-ggplot(data = dfpca, aes(x=a1,y=a2, color=pop)) +
+  theme(panel.background=element_blank(),
+        axis.text=element_text(family="Arial Narrow", size=14,color='grey40'),
+        axis.title=element_text(family="Arial Narrow", size=14,color='grey40'),
+        panel.border=element_rect(fill=NA,colour="grey40")) +
+  xlab(paste0('Axis',1))+
+  ylab(paste0('Axis',2))+
+  geom_hline(yintercept = 0, colour = "gray65") +
+  geom_vline(xintercept = 0, colour = "gray65") +
+  geom_point( position= "jitter", alpha = 0.8, size = 4) +
+  geom_text(data=centroids,aes(label=pop), size=5,position="jitter")
+
+gpca
+
+# Create a data.frame containing individual coordinates
+ind_coords = as.data.frame(pca1$li)
+
+# Rename columns of dataframe
+colnames(ind_coords) = c("Axis1","Axis2","Axis3")
+
+# Add a column containing individuals
+ind_coords$Ind = indNames(lobster_gen_sub)
+
+# Add a column with the site IDs
+ind_coords$Site = lobster_gen_sub$pop
+
+# Calculate centroid (average) position for each population
+centroid = aggregate(cbind(Axis1, Axis2, Axis3) ~ Site, data = ind_coords, FUN = mean)
+
+# Add centroid coordinates to ind_coords dataframe
+ind_coords = left_join(ind_coords, centroid, by = "Site", suffix = c("",".cen"))
+
+# Define colour palette
+cols = brewer.pal(nPop(lobster_gen_sub), "Set1")
+
+# Custom x and y labels
+xlab = paste("Axis 1 (", format(round(percent[1], 1), nsmall=1)," %)", sep="")
+ylab = paste("Axis 2 (", format(round(percent[2], 1), nsmall=1)," %)", sep="")
+
+# Custom theme for ggplot2
+ggtheme = theme(axis.text.y = element_text(colour="black", size=12),
+                axis.text.x = element_text(colour="black", size=12),
+                axis.title = element_text(colour="black", size=12),
+                panel.border = element_rect(colour="black", fill=NA, size=1),
+                panel.background = element_blank(),
+                plot.title = element_text(hjust=0.5, size=15) 
+)
+
+# Scatter plot axis 1 vs. 2
+ggplot(data = ind_coords, aes(x = Axis1, y = Axis2))+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = 0)+
+  # spider segments
+  geom_segment(aes(xend = Axis1.cen, yend = Axis2.cen, colour = Site), show.legend = FALSE)+
+  # points
+  geom_point(aes(fill = Site), shape = 21, size = 3, show.legend = FALSE)+
+  # centroids
+  geom_label(data = centroid, aes(label = Site, fill = Site), size = 4, show.legend = FALSE)+
+  # colouring
+  scale_fill_manual(values = cols)+
+  scale_colour_manual(values = cols)+
+  # custom labels
+  labs(x = xlab, y = ylab)+
+  ggtitle("Lobster PCA")+
+  # custom theme
+  ggtheme
+```
+
 
 ## Inférence bayésienne de la structure de population
 #input les données, fichier avec hearder différent
