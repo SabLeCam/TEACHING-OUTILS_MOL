@@ -1,9 +1,22 @@
-Analyses de différenciation entre population
-On compare maintenant les patrons de diversité génétiques entre les populations par rapport à la diversité globale.
-Matrice de Fst par paire de population (estimateur du Fst de Weir de Cockerham(1984)
-mat.obs <- pairwise.WCfst(dataset.hfstat)
-représenter cette matice avec une heatmap
+# TP Analyses de différenciation entre populations
 
+( France Dufresne et Sabrina Le Cam, d'après un document produit par Tom Jenkins source https://tomjenkins.netlify.app/tutorials/r-popgen-getting-started/)
+
+Nous repartons du jeux de données de l'étude de [Jenkins et al. 2019](https://onlinelibrary.wiley.com/doi/10.1111/eva.12849) sur le Homard bleu avec lequel nous avons fait le [TP Hardy Weinberg](https://github.com/SabLeCam/OUTILS_MOL/tree/main/HardyWeinberg)
+Récupérer les données
+```r
+
+```
+
+On compare maintenant les patrons de diversité génétique entre les populations par rapport à la diversité globale.
+
+## Matrice de Fst par paire de population (estimateur du Fst de Weir de Cockerham(1984)
+
+```r
+mat.obs <- pairwise.WCfst(dataset.hfstat)
+```
+Représenter cette matice avec une heatmap
+```r
 melted_matobs <- melt(mat.obs, na.rm = TRUE)
 colnames(melted_matobs)<-c("pop1","pop2","value")
 
@@ -15,8 +28,9 @@ ggheatmap <- ggplot2::ggplot(melted_matobs, aes(pop1, pop2, fill = value)) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, 
                                    size = 12, hjust = 1))
 ggheatmap
+```
 
-Analyses PCA (principle components analysis) sur le jeux de homard
+## Analyses PCA (principle components analysis) sur le jeux de homard
 
 Inférence bayésienne de la structure de population
 #input les données, fichier avec hearder différent
