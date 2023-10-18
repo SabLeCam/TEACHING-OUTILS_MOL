@@ -196,8 +196,8 @@ Nous allons analyser une jeu de données de microsatellites d'un espèce d'octoc
 
 Les microsatellites correspondent à des courtes séquences d’ADN répétées en tandem.La structure particulière de ces séquences les rend très susceptibles à la mutation. Les taux de mutation des séquences microsatellites seront souvent très élevés et, en conséquence, leur polymorphisme en populations naturelles sera lui aussi élevé.
 <p float="left">
- <img width="385" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/b291a10b-dcba-4530-8c68-78fd0c65774e">
-<img width="200" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9469240c-1b07-4fe9-8aa9-7e3edb4e93bb">
+ <img width="385" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/b291a10b-dcba-4530-8c68-78fd0c65774e.png">
+<img width="200" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9469240c-1b07-4fe9-8aa9-7e3edb4e93bb.png">
 </p>
  
 *_Figure issue de Holland et al. 2017_*
