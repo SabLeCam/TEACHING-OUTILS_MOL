@@ -183,53 +183,36 @@ Choisir le K pour lequel la fonction atteint un plateau ou présente une forte a
 
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9c6e0cae-3acd-42db-84ec-cd8228888a01)
 
-  
-# identify best run for chosen K value
-run <- which.min(cross.entropy(snmf.obj1, K = 2))
-# format individual names
-temp <- as.data.frame(indNames(gen)) %>%
-  left_join(strata) %>%
-  select(LIB_ID, REGION)
-# extract q.matrix
-q.matrix <- Q(snmf.obj1, K = 2, run = run) %>% 
-  as.data.frame() %>%
-  rename(GRP1 = V1,
-         GRP2 = V2) %>%
-  bind_cols(temp) %>%
-  gather(key = GRP, value = MEMBSHIP, 1:2) %>%
-  mutate(REGION = ordered(REGION, levels = reg))
-  
-# plot ancestry coefficients
-ggplot(q.matrix, aes(x = LIB_ID, y = MEMBSHIP, fill = GRP, color = GRP)) +
-  geom_bar(stat = "identity") +
-  labs(x = "INDV", y = "memb. prob") +
-  facet_grid(. ~ REGION, scales = "free", space = "free") +
-  scale_fill_viridis_d() +
-  scale_color_viridis_d() +
-  theme_standard +
-  theme(axis.text.x = element_blank())
-input.file2 = "/Users/slecam/Desktop/COURS/BIODIV&CONS/4-TP structure tigres/169_tigers_structure.stru.txt"
+Identifier le meilleur réplicat pour le K donné
+```r
+run <- which.min(cross.entropy(snmf.obj1, K = 3))
+```
 
-struct2geno(file = input.file2, TESS = FALSE, diploid = TRUE, FORMAT = 2,
-            extra.row = 1, extra.col = 2, output = "tiger.geno")
-
-obj.snmf = snmf("tiger.geno", K=1:8, ploidy=2, entropy=T, repetition=10, alpha=100, project="new")
-plot(obj.snmf, cex = 1.2, col = "lightblue", pch = 19)
-
-Comment choisir le modèle avec la meilleure probabilité postérieur?
-"We use SNMF’s cross-entropy criterion to infer the best estimate of K. The lower the cross-entropy, the better our model accounts for population structure. Sometimes cross-entropy continues to decline, so we might choose K where cross entropy first decreases the most."
-Souvent la solution n'est pas de choisir une K mais bien comparer les informations amenées par plusierus K Ici la première diminution de K a lieu à K=4 mais ça diminue également à K=6 Comparons les 2.
-Comment représenter les données?
-qmatrix = Q(obj.snmf, K = 4, run=27)
-
+Extraire la matrice de valeur q et faire un graphique
+```r
+qmatrix = Q(snmf.obj1, K = 3, run=1)
 barplot(t(qmatrix), col = c("orange","violet","lightgreen","gray","red","darkblue"), border = NA, space = 0,
         xlab = "Individuals", ylab = "Admixture coefficients")
-
+```
+```r
 par(mar=c(4,4,0.5,0.5))
-pops<-levels(dataset@pop)
+pops<-levels(lobster_gen_sub@pop)
 barplot(t(qmatrix), col=RColorBrewer::brewer.pal(9,"Paired"), 
         border=NA, space=0, xlab="Individuals", 
         ylab="Admixture coefficients")
 #Add population labels to the axis:
 for (i in 1:length(pops)){
-  axis(1, at=median(which(dataset@pop==pops[i])), labels=pops[i])}
+  axis(1, at=median(which(lobster_gen_sub@pop==pops[i])), labels=pops[i])}
+```
+ajouter les délimitations des populations
+```r
+table(lobster_gen_sub$pop)
+abline(v=c(35,68,104,140,155))
+```
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/98084149-ee1c-4c2d-b233-c158a48bdc03)
+
+
+
+
+
+
