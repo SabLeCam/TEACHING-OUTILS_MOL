@@ -23,6 +23,8 @@ if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
 BiocManager::install("LEA")
+
+install.packages("tidyverse")
 ```
 
 
@@ -37,6 +39,7 @@ library("ggplot2")
 library("RColorBrewer")
 library("scales")
 library("LEA")
+library("tidyverse")
 ```
 
 Nous repartons du jeux de données de l'étude de [Jenkins et al. 2019](https://onlinelibrary.wiley.com/doi/10.1111/eva.12849) sur le Homard bleu avec lequel nous avons fait le [TP Hardy Weinberg](https://github.com/SabLeCam/OUTILS_MOL/tree/main/HardyWeinberg)
@@ -101,10 +104,11 @@ pca<-dudi.pca(x, scannf = FALSE, scale = FALSE, nf = 3)
 ```
 En représentant les vecteurs eigen, on peut analyser quel pourcentage de la variance génétique est expliqué par chacun des axes
 ```r
-percent = pca1$eig/sum(pca1$eig)*100
+percent = pca$eig/sum(pca$eig)*100
 barplot(percent, ylab = "Genetic variance explained by eigenvectors (%)", ylim = c(0,12),
         names.arg = round(percent, 1))
 ```
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/826543ae-de37-4f55-a420-10eeed27a2f7)
 
 On représente graphiquement les résultats de l'ACP
 ```r
@@ -124,101 +128,61 @@ gpca<-ggplot(data = dfpca, aes(x=a1,y=a2, color=pop)) +
   geom_hline(yintercept = 0, colour = "gray65") +
   geom_vline(xintercept = 0, colour = "gray65") +
   geom_point( position= "jitter", alpha = 0.8, size = 4) +
-  geom_text(data=centroids,aes(label=pop), size=5,position="jitter")
+  geom_label(data=centroids,aes(label=pop), size=5,position="jitter",
+             fill= 'white',show.legend = FALSE)
 
 gpca
-
-# Create a data.frame containing individual coordinates
-ind_coords = as.data.frame(pca1$li)
-
-# Rename columns of dataframe
-colnames(ind_coords) = c("Axis1","Axis2","Axis3")
-
-# Add a column containing individuals
-ind_coords$Ind = indNames(lobster_gen_sub)
-
-# Add a column with the site IDs
-ind_coords$Site = lobster_gen_sub$pop
-
-# Calculate centroid (average) position for each population
-centroid = aggregate(cbind(Axis1, Axis2, Axis3) ~ Site, data = ind_coords, FUN = mean)
-
-# Add centroid coordinates to ind_coords dataframe
-ind_coords = left_join(ind_coords, centroid, by = "Site", suffix = c("",".cen"))
-
-# Define colour palette
-cols = brewer.pal(nPop(lobster_gen_sub), "Set1")
-
-# Custom x and y labels
-xlab = paste("Axis 1 (", format(round(percent[1], 1), nsmall=1)," %)", sep="")
-ylab = paste("Axis 2 (", format(round(percent[2], 1), nsmall=1)," %)", sep="")
-
-# Custom theme for ggplot2
-ggtheme = theme(axis.text.y = element_text(colour="black", size=12),
-                axis.text.x = element_text(colour="black", size=12),
-                axis.title = element_text(colour="black", size=12),
-                panel.border = element_rect(colour="black", fill=NA, size=1),
-                panel.background = element_blank(),
-                plot.title = element_text(hjust=0.5, size=15) 
-)
-
-# Scatter plot axis 1 vs. 2
-ggplot(data = ind_coords, aes(x = Axis1, y = Axis2))+
-  geom_hline(yintercept = 0)+
-  geom_vline(xintercept = 0)+
-  # spider segments
-  geom_segment(aes(xend = Axis1.cen, yend = Axis2.cen, colour = Site), show.legend = FALSE)+
-  # points
-  geom_point(aes(fill = Site), shape = 21, size = 3, show.legend = FALSE)+
-  # centroids
-  geom_label(data = centroid, aes(label = Site, fill = Site), size = 4, show.legend = FALSE)+
-  # colouring
-  scale_fill_manual(values = cols)+
-  scale_colour_manual(values = cols)+
-  # custom labels
-  labs(x = xlab, y = ylab)+
-  ggtitle("Lobster PCA")+
-  # custom theme
-  ggtheme
 ```
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/bc254c2c-df8f-4263-98af-4cbb1c264ba3)
 
 
 ## Inférence bayésienne de la structure de population
-#input les données, fichier avec hearder différent
-# FORMAT DATA ----
-# extract allele counts
-allelecount <- as.data.frame(tab(gen_n))
-# replace missing values with 9
+
+Formater les données en format 'geno' surppoté par le package LEA
+```r
+# extraire les données allèliques
+allelecount <- as.data.frame(tab(lobster_gen_sub))
+# remplacer les données manquante par 9
 allelecount[is.na(allelecount)] <- 9
-# write lfmm input file
-write.lfmm(allelecount, "data/POPGEN/GTF.lfmm")
-geno <- lfmm2geno(input.file = "data/POPGEN/GTF.lfmm",
-                  output.file = "data/POPGEN/GTF.geno")
-# RUN ANALYSIS ----
-# calculate coancestry coefficents (K = 1-10 for 10 iterations)
-snmf.obj1 <- snmf(input.file = "data/POPGEN/GTF.geno",
-                 K = 1:10,
-                 project = "new",
-                 repetitions = 10,
-                 CPU = 65,
-                 entropy = TRUE,
-                 seed = 42)
-# IDENTIFY STATISTICALLY MOST SUPPORTED K ----
-# plot cross-entroypy criterion for each K
+# écrire un fichier en format lfmm
+write.lfmm(allelecount, "lobster.lfmm")
+#écrire un fichier en format geno
+geno <- lfmm2geno(input.file = "lobster.lfmm",
+                  output.file = "lobster.geno")
+```
+### Faire l'analyse d'inférence bayésienne
+calculer coefficient de coancestrie, c'est à dire la probablilité de tirer deux gènes identiques dans deux individus d'une même population. (nombre de pop testées (K) entre 1 et 10 et 10 répétition par K)
+```r
+snmf.obj1 <- snmf(input.file = "lobster.geno",
+                  K = 1:10,
+                  project = "new",
+                  repetitions = 10,
+                  CPU = 65,
+                  entropy = TRUE,
+                  seed = 42)
+```
+Identifier le K qui est statistiquement le plus supporté à partire du criètre de coss-entropie pour chaque K
+représentation graphique
+
+```r
 K <- summary(snmf.obj1)$crossEntropy %>%
   t() %>%
   as.data.frame() %>%
   rownames_to_column("temp") %>%
   mutate(K = as.numeric(str_extract(temp, "(\\d)+"))) %>%
   select(-temp)
-# choose K for which the function plateaus or increases sharply (K = 2)
+
 ggplot(K, aes(x = K, y = mean)) +
   geom_line(color = "black", size = 0.25 ) +
   geom_segment(aes(x = K, y = min, xend = K, yend = max)) +
   geom_point(shape = 21, size = 4, color = "black", fill = "darkorange") +
   scale_x_continuous(breaks = seq(0, 10, by = 1)) +
-  labs(x = "number of ancestral populations", y = "cross-entropy criterion") +
-  theme_standard
+  labs(x = "number of ancestral populations", y = "cross-entropy criterion")
+```
+Choisir le K pour lequel la fonction atteint un plateau ou présente une forte augmentation (K=3)
+
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9c6e0cae-3acd-42db-84ec-cd8228888a01)
+
   
 # identify best run for chosen K value
 run <- which.min(cross.entropy(snmf.obj1, K = 2))
