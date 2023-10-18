@@ -67,8 +67,8 @@ Nous allons analyser une jeu de données de SNP des 1278 individus (homards) iss
 Un SNP est une mutation d'un seul nucléotide à une position donnée, entre individus d'une même population. Les SNP sont généralement bialléliques, c'est-à-dire qu'il y a deux allèles par locus et un des deux allèles a une fréquence d'au moins 1%.
 
 <p float="left">
-<img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/ff999420-630b-40f5-a0a5-e039078a6015">
-<img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d487deb6-48af-47c4-a47f-e5932d70df0d">
+ <img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/152653c4-7461-48b9-8e22-75258e0404d3">
+ <img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/bec3b1e4-5fe3-4dd8-a7c4-5832e92ff18b">
 </p>
 
 *_Figure issue de Jenkins et al. 2019_*
