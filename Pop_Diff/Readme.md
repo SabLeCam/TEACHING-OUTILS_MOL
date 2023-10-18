@@ -56,7 +56,7 @@ lobster_gen_sub = popsub(lobster_gen, sublist = c("Ale","Ber","Brd","Pad","Sar17
 ```
 On compare maintenant les patrons de diversité génétique entre les populations par rapport à la diversité globale.
 
-## Matrice de Fst par paire de population (estimateur du Fst de Weir de Cockerham(1984)
+## Matrice de Fst par paire de population (estimateur du Fst de Weir de Cockerham(1984))
 
 ```r
 lobster_fst = genet.dist(lobster_gen_sub, method = "WC84") %>% round(digits = 3)
