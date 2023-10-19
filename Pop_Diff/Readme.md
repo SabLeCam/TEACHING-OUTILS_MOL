@@ -219,6 +219,8 @@ abline(v=c(35,68,104,140,155))
 >Vérifier les résulats avec K=2, qu'est que ça nous apprend?>
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d8c8d144-ae0b-4fe9-ab7c-833e5814d548)
 
+>Essayez maintenant de refaire ces analyses avec le jeux de données de gorgones
+>Travaillez sur une sous-echantillons comprenant les populations ("Bla","Bov","Bre","Lun","PorI","Sko")
 
 
 
