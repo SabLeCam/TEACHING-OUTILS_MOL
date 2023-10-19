@@ -135,7 +135,7 @@ gpca<-ggplot(data = dfpca, aes(x=a1,y=a2, color=pop)) +
 
 gpca
 ```
-<On peut refaire ce graphique en considérant les composantes 1 et 3. qu'est ce que ce nouveau graphique nous informe?>
+>On peut refaire ce graphique en considérant les composantes 1 et 3. qu'est ce que ce nouveau graphique nous informe?
 
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/bc254c2c-df8f-4263-98af-4cbb1c264ba3)
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/5729add6-54fa-4be8-9401-e93e31c7962c)
@@ -217,7 +217,7 @@ table(lobster_gen_sub$pop)
 abline(v=c(35,68,104,140,155))
 ```
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/98084149-ee1c-4c2d-b233-c158a48bdc03)
-<Vérifier les résulats avec K=2, qu'est que ça nous apprend?>
+>Vérifier les résulats avec K=2, qu'est que ça nous apprend?>
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d8c8d144-ae0b-4fe9-ab7c-833e5814d548)
 
 
