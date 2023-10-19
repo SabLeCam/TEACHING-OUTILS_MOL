@@ -86,10 +86,12 @@ ggheatmap <- ggplot2::ggplot(melted_matobs, aes(pop1, pop2, fill = value)) +
                                    size = 12, hjust = 1))
 ggheatmap
 ```
+
 <p float="left">
- <img width="300" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/a44d655f-81bb-4b59-b665-4df44f844f7f.png">
+ <img width="450" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/24783241-4586-465d-b6fc-d7c0c942f514">
  <img width="450" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/8710515c-b3ac-482f-a86f-84e643239c01.png">
 </p>
+
 
 ## Analyses ACP (analyse en composantes principales)
 
