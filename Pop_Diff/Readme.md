@@ -145,7 +145,7 @@ gpca
 
 ## Inférence bayésienne de la structure de population
 
-Formater les données en format 'geno' surppoté par le package LEA
+Formater les données en format 'geno' supporté par le package LEA
 ```r
 # extraire les données allèliques
 allelecount <- as.data.frame(tab(lobster_gen_sub))
