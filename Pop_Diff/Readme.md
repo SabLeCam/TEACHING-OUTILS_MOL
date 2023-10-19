@@ -193,6 +193,7 @@ Choisir le K pour lequel la fonction atteint un plateau ou présente une forte a
 Identifier le meilleur réplicat pour le K donné
 ```r
 run <- which.min(cross.entropy(snmf.obj1, K = 3))
+run
 ```
 
 Extraire la matrice de valeur q et faire un graphique
