@@ -198,8 +198,6 @@ run <- which.min(cross.entropy(snmf.obj1, K = 3))
 Extraire la matrice de valeur q et faire un graphique
 ```r
 qmatrix = Q(snmf.obj1, K = 3, run=1)
-barplot(t(qmatrix), col = c("orange","violet","lightgreen","gray","red","darkblue"), border = NA, space = 0,
-        xlab = "Individuals", ylab = "Admixture coefficients")
 ```
 ```r
 par(mar=c(4,4,0.5,0.5))
