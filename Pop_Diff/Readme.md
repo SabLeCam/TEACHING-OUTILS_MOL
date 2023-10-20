@@ -137,7 +137,8 @@ gpca<-ggplot(data = dfpca, aes(x=a1,y=a2, color=pop)) +
 
 gpca
 ```
->On peut refaire ce graphique en considérant les composantes 1 et 3. qu'est ce que ce nouveau graphique nous informe?
+#Comment peut-on décrire les résultats de cette analyse ?
+>On peut refaire ce graphique en considérant les composantes 1 et 3. qu'est ce que ce nouveau graphique nous indique?
 
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/bc254c2c-df8f-4263-98af-4cbb1c264ba3)
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/5729add6-54fa-4be8-9401-e93e31c7962c)
