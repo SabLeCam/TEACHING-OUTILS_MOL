@@ -65,6 +65,7 @@ lobster_fst
 Représenter cette matice avec une heatmap
 
 ```r
+mat.obs <- pairwise.WCfst(dataset.hfstat)
 #garder que la partie supérieure de la matrice
   get_upper_tri <- function(cormat){
     cormat[lower.tri(cormat)]<- NA
