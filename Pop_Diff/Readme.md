@@ -224,7 +224,7 @@ abline(v=c(35,68,104,140,155))
 >Quels facteurs peuvent expliquer cette structure de populations ?
 
 >Essayez maintenant de refaire ces analyses avec le jeux de données de gorgones.
->Travaillez sur une sous-echantillons comprenant les populations ("Bla","Bov","Bre","Lun","PorI","Sko")
+
 
 
 
