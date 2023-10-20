@@ -117,9 +117,7 @@ barplot(percent, ylab = "Genetic variance explained by eigenvectors (%)", ylim =
 
 On représente graphiquement les résultats de l'ACP
 ```r
-
-li<-pca$scores
-dfpca<-data.frame(a1=li[,1],a2=li[,2],pop=lobster_gen_sub$pop,ind=rownames(pca$scores))
+dfpca<-data.frame(a1=pca$li[,1],a2=pca$li[,2],pop=as.vector(lobster_gen_sub$pop),ind=rownames(pca$li))
 
 centroids <- aggregate(cbind(a1,a2)~pop,data=dfpca,mean)
 
