@@ -65,7 +65,7 @@ lobster_fst
 Représenter cette matice avec une heatmap
 
 ```r
-#garder que la partie suppérieure de la matrice
+#garder que la partie supérieure de la matrice
   get_upper_tri <- function(cormat){
     cormat[lower.tri(cormat)]<- NA
     return(cormat)
@@ -92,6 +92,8 @@ ggheatmap
  <img width="450" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/8710515c-b3ac-482f-a86f-84e643239c01.png">
 </p>
 
+#Quelles populations possèdent les valeurs de Fst  les plus divergentes ?
+Quelles populations possèdent les valeurs de Fst les plus faibles ?
 
 ## Analyses ACP (analyse en composantes principales)
 
