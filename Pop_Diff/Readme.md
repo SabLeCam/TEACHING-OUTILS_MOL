@@ -119,9 +119,9 @@ On représente graphiquement les résultats de l'ACP
 ```r
 gpca<-data.frame(a1=pca$li[,1],a2=pca$li[,2],pop=as.vector(lobster_gen_sub$pop),ind=rownames(pca$li))
 
-centroids <- aggregate(cbind(a1,a2)~pop,data=dfpca,mean)
+centroids <- aggregate(cbind(a1,a2)~pop,data=gpca,mean)
 
-gpca<-ggplot(data = dfpca, aes(x=a1,y=a2, color=pop)) +
+gpca<-ggplot(data = gpca, aes(x=a1,y=a2, color=pop)) +
   theme(panel.background=element_blank(),
         axis.text=element_text(family="Arial Narrow", size=14,color='grey40'),
         axis.title=element_text(family="Arial Narrow", size=14,color='grey40'),
