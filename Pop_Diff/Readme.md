@@ -224,7 +224,7 @@ abline(v=c(35,68,104,140,155))
 
 >Essayez maintenant de refaire ces analyses avec le jeux de données de gorgones.
 
-seafan_gen_sub = popsub(seafan_gen, sublist = c("Arm1","Far","Bla","Thu","Bre","Lio"))
+seafan_gen_sub = popsub(seafan_gen, sublist = c("ArmI","Far","Bla","Thu","Bre","Lio"))
 
 
 
