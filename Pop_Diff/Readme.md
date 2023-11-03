@@ -237,8 +237,7 @@ tab(seafan_gen[loc = "Ever002"])[runif(3, 1, nInd(seafan_gen)), ]
 popNames(seafan_gen) = gsub("[^a-zA-Z]", "", popNames(seafan_gen))
 popNames(seafan_gen)
 
-#ici c'est les pop que tu as choisis et sui sont dand le github
-#seafan_gen_sub = popsub(seafan_gen, sublist = c("ArmI","Far","Bla","Thu","Bre","Lio"))
+
 
 #ici c'est les pop selectionnée par Jenkins
 seafan_gen_sub = popsub(seafan_gen, sublist = c("Bla","Bov","Bre","Lun","PorI","Sko"))
@@ -307,12 +306,12 @@ allelecount <- as.data.frame(tab(seafan_gen_sub))
 # replace missing values with 9
 allelecount[is.na(allelecount)] <- 9
 # write lfmm input file
-write.lfmm(allelecount, "lobster.lfmm")
-geno <- lfmm2geno(input.file = "lobster.lfmm",
-                  output.file = "lobster.geno")
+write.lfmm(allelecount, "seafan.lfmm")
+geno <- lfmm2geno(input.file = "seafan.lfmm",
+                  output.file = "seafan.geno")
 # RUN ANALYSIS ----
 # calculate coancestry coefficents (K = 1-10 for 10 iterations)
-snmf.obj1 <- snmf(input.file = "lobster.geno",
+snmf.obj1 <- snmf(input.file = "seafan.geno",
                   K = 1:10,
                   project = "new",
                   repetitions = 10,
