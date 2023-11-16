@@ -2,6 +2,7 @@
 
 *_Objectif du laboratoire : Se familiariser avec la manipulation de données génomiques afin de réaliser des analyses statistiques dans R._*
 
+Références pour approfondir le sujet : Gruber, B., Unmack, P., Berry, O., & Georges, A. (2019). Introduction to dartR. User Manual.
 
 **DArTSeq** est une méthode qui extrait la variation génomique reproductible à travers les génomes de nombreux individus à un coût abordable. La technique
 digère l'ADN génomique à l'aide de paires d'enzymes de restriction (coupeurs). Quand l'ADN est coupé en deux endroits situés à une distance raisonnable l'un de l'autre, le fragment est disponible pour le séquençage à l’aide des plateformes de lecture courte Illumina. Par conséquent, les données sont représentatifs dans le sens où ils sont générés pour une sélection aléatoire de petits fragments de séquence uniquement, fragments qui présentent une variation au niveau de paires de bases uniques (SNP).
@@ -122,41 +123,30 @@ gl.report.callrate(gl7, method='ind')
 
 gl.smearplot(gl7)
 ```
-![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/707316cb-457d-4fbe-9a70-b493c56f71d8)
+<img width="702" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/707316cb-457d-4fbe-9a70-b493c56f71d8">
 
 
 ## Analyse de la structure de la diversité génétique avec une PCOA
 ### Qu’est-ce qu’une PCOA ?
 L’Analyse des Coordonnées Principales (PCoA) est une analyse de type multivariée, ça signifie qu’elle intègre une variable dépendante (VD) et plus d’une variable indépendante (VI). Une PCoA est une analyse semblable à une PCA et permet de simplifier des données complexes. L’objectif de cette analyse est de réaliser un graphique qui nous permettra d’interpréter les différences génétiques entre des groupes et des individus. La PCoA va créer autant de nouvelles variables (PC) qu’il y a de variables indépendantes initiales (individus) et les deux plus informatives seront projetées. Chaque nouvelle variable contiendra de l’information sur l’ensemble des variables indépendantes initiales (individus).
 
+```r
+pc7 <- gl.pcoa(gl7, nfactors=5)
+names(pc7)
+barplot(pc7$eig/sum(pc7$eig)*100, )#graphique de pourcentage de distribution des axes
+gl.pcoa.plot(pc7, gl7, label = "ind", xaxis=1, yaxis=2)
+```
+<p align="center">
+<img width="702" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/a6abf8d9-9b5a-40a9-844e-f655808381ec">
+</p>
+
+>Comment interprétez-vous le graphique obtenu ?
+
+>Il y a-t-il des différences avec le graphique précédent ? si oui expliquez
+
+>Reprenez les mêmes commandes pour les laminaires (filename= Report_DSacc21-6007_3_moreOrders_SNP_2. Indmetafile= laminaria2.csv)
+
+>En quoi les zostères diffèrent-elles des laminaires au niveau de leur structure populationnelle ?
 
 
 
-
-Le premier filtre que nous allons faire est le filtre pour enlever les loci monomorphe grâce à cette fonction :
- 
-	Pour chaque filtre effectué nous ne supprimons pas le fichier précédent, nous créons à chaque fois un nouvel objet (ici : gl1). Nous pouvons maintenant regarder combien de loci ont été enlevé en cliquant sur « gl1 » dans l’environnement de RStudio.
- 
-	Il reste 6293 loci sur les 6365 du départ, il y avait donc 72 loci monomorphes dans notre jeu de donnée. Nous pouvons nous réessayer à faire la PCoA pour voir si ce filtre à changer quelque chose. Pour ce faire, nous reprenons la formule de la PCoA et nous changeons « gl » par « gl1 ». On change aussi le nom de l’objet « pc » pour qu’il n’y ait pas de suppression d’information. Cela donne donc :
-(Attention cette fonction est assez longue notamment pour l’affichage du graphique, il fait bien attendre.)
- 
-	Avec déjà ce premier filtre nous obtenons un graphique de groupement. Cela signifie donc bien que le problème précédent était donc bien lié aux loci monomorphes.
- 
-Comment interprétez-vous le graphique obtenu ?
-	Nous allons ensuite filtrer les loci et les individus avec trop de données manquantes pour les loci on vise 0.05% maximum de données manquantes et pour les individus 3% maximum. Nous voulons aussi enlever les doublons. Nous faisons ces filtres en plusieurs pour maximiser le nombre de loci et d’individus tout en enlevant un maximum de données manquantes.
-
-Après tous les filtres, nous obtenons donc un total de 152 individus et 1136 loci.  
-Nous pouvons faire la PCoA finale en utilisant la même fonction et en changeant « gl » par « gl7 » et « pc » par « pc7 ». Cela donne donc :
- 
-Le résultat obtenu est donc ce graphique :
- 
-
-
-Comment interprétez-vous le graphique obtenu ?
-Il y a-t-il des différences avec le graphique précédent ? si oui expliquez
-Reprenez les mêmes commandes pour les laminaires (filename= Report_DSacc21-6007_3_moreOrders_SNP_2. Indmetafile= laminaria2.csv)
-
-En quoi les zostères diffèrent-elles des laminaires au niveau de leur structure populationnelle ?
-
-Références pour approfondir le sujet :
-Gruber, B., Unmack, P., Berry, O., & Georges, A. (2019). Introduction to dartR. User Manual.
