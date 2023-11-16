@@ -39,16 +39,44 @@ library(adegenet)
 library(ggplot2)
 ```
 
-ouverture de fichier avec la fonction gl.read.dart
+Ouverture de fichier avec la fonction *_gl.read.dart()_*.
+
 Les données dartSeq sont composée de 2 fichier: un fichier de génotype et un fichier de métadata, c'est à dire toutes les infos complémentaire sur les individus génotypes (ex :lieu/date d'échantillonnage, taille, sexe, traitement expérimental ....)
 <p align="center">
 <img width="478" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/0480474a-cdc5-4481-8c19-62a7e337d2b2">
 </p>
+
 ```r
 # Définir le répertoire de travail par défaut 
 setwd("PATH_TO_TOUR_FILE")
 gl <- gl.read.dart(filename = "Zost_bonfichier.csv", ind.metafile= "Popidzostbonfichier(1).csv", nas = "-", topskip = 6, probar = TRUE)
+gl
 ```
+<img width="574" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/e206dd28-322d-4261-b126-50419c288340">
+
+Examiner les données (nb d'individus, nb de locus, % de données manquantes)
+
+```r
+#par locus
+gl.report.callrate(gl)
+#par individu
+gl.report.callrate(gl, method='ind')
+```
+<img width="702" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/555a0df5-4ee2-4bf0-8f7f-9062c5dc3f75">
+<img width="711" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/3c9d96e3-0d68-40c2-9b66-b597852038bd">
+
+On peut aussi visualiser rapidement les données avec un *_smear plot_*
+```r
+gl.smearplot(gl)
+```
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/39454085-da08-42dc-8867-ab725c66ff8e)
+
+
+
+
+
+
+
 
 
 
