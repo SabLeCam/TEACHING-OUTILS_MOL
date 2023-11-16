@@ -5,18 +5,17 @@
 
 **DArTSeq** est une méthode qui extrait la variation génomique reproductible à travers les génomes de nombreux individus à un coût abordable. La technique
 digère l'ADN génomique à l'aide de paires d'enzymes de restriction (coupeurs). Quand l'ADN est coupé en deux endroits situés à une distance raisonnable l'un de l'autre, le fragment est disponible pour le séquençage à l’aide des plateformes de lecture courte Illumina. Par conséquent, les données sont représentatifs dans le sens où ils sont générés pour une sélection aléatoire de petits fragments de séquence uniquement, fragments qui présentent une variation au niveau de paires de bases uniques (SNP).
-
+<p align="center">
 <img width="680" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d1aef0a9-b383-489e-aae8-a3c7f7589793">
-
+</p>
 Les **SNP**, ou single nucleotide polymorphisms, sont des mutations d'une seule paire de bases à un locus nucléaire. Ce locus nucléaire est représenté dans l'ensemble de données par deux séquences qui, sur un locus hétérozygote, prennent deux états alléliques, l'un appelé l'état de référence, l'autre comme état alternatif ou SNP.
-
+<p align="center">
 <img width="703" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/862d6576-7d0a-4a29-80e7-2a5143f880f8">
-
+</p>
 Les données peuvent être représentées dans un tableau de bases SNP (A, T, C ou G), avec deux états pour chaque individu à chaque locus dans un organisme diploïde.Alternativement, comme les données sont bialléliques, il est pratique de coder les données comme 0 pour les homozyogotes pour un allèle, 1 pour les hétérozygotes et 2 pourhomozygotes de l’autre allèle.L'allèle de référence est arbitrairement choisi comme l'allèle le plus courant, donc 0 est le
-score pour un homozygote à l'allèle de référence, et 2 est le score pour un homozygote à l'allèle alternatif. NA indique que le SNP n’a pas pu être évalué. 
-	
- <img width="538" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/cbd625a7-d3a1-4f25-ad7e-0c829691d16b">
- <img width="533" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/6cf8379f-9540-438f-9b7a-193ae0b792e6">
+score pour un homozygote à l'allèle de référence, et 2 est le score pour un homozygote à l'allèle alternatif. NA indique que le SNP n’a pas pu être évalué.
+
+ <img width="538" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/cbd625a7-d3a1-4f25-ad7e-0c829691d16b"> <img width="533" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/6cf8379f-9540-438f-9b7a-193ae0b792e6">
 
 
 
@@ -42,9 +41,9 @@ library(ggplot2)
 
 ouverture de fichier avec la fonction gl.read.dart
 Les données dartSeq sont composée de 2 fichier: un fichier de génotype et un fichier de métadata, c'est à dire toutes les infos complémentaire sur les individus génotypes (ex :lieu/date d'échantillonnage, taille, sexe, traitement expérimental ....)
-
+<p align="center">
 <img width="478" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/0480474a-cdc5-4481-8c19-62a7e337d2b2">
-
+</p>
 ```r
 # Définir le répertoire de travail par défaut 
 setwd("PATH_TO_TOUR_FILE")
