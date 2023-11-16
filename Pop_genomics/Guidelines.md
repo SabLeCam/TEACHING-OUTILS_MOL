@@ -20,7 +20,7 @@ score pour un homozygote à l'allèle de référence, et 2 est le score pour un 
 
 
 
-## Manipulation de données
+## Exploration des données
 
 Nous allons voir comment , au préalable de l'analyse de la diversité génétique en elle même, ces données méritent d'être explorées et filtrées afin de s'assurer de leur robustesse (taux de données manquantes, neutralité...)
 
@@ -54,7 +54,18 @@ gl
 ```
 <img width="574" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/e206dd28-322d-4261-b126-50419c288340">
 
-Examiner les données (nb d'individus, nb de locus, % de données manquantes)
+Une fois la fonction effectuée il faut vérifier que le fichier a bien été lu correctement. Pour cela, il faut cliquer sur l’objet dans l’environnement de Rstudio et vérifier le bon nombre d’individus (ici 161), le bon nombre de loci et les libellés des populations. 
+ 
+1)	Utilisez la fonction nLoc(gl) pour déterminer le nombre de loci
+
+2)	Utilisez la fonction nInd(gl) pour déterminer le nombre d’individus
+
+3)	Utilisez la fonction nPop(gl) pour déterminer le nombre de populations
+
+4)	Utilisez la fonction  popNames(gl) pour obtenir le nom des populations
+
+
+Examiner la qualité des données (nb d'individus, nb de locus, % de données manquantes)
 
 ```r
 #par locus
@@ -71,57 +82,57 @@ gl.smearplot(gl)
 ```
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/39454085-da08-42dc-8867-ab725c66ff8e)
 
+## Manipulation de données
+
+Presque systématiquement, ce type de données demande d'entreprendre diverses manipulations avant l'analyse en supprimant certains individus ou locus. On veut garder le maximum d'individus tout en réduisant au maximum le nombre de données manquantes qui peuvent induire du biais dans la analyses. Les loci avec beaucoup de données manquantes ne sont pas informatifs (monomorphes, dupliqués…) et les individus avec trop de données manquantes peuvent altérer les résultats comme des analyses de diversité génétique par exemple.
+On commence par filtrer les SNPs qui n'ont que des données manquantes ou ceux qui sont monomorphes.
+*_Cette étape est otpionnelle ici car elle a déjà été effectué en amont de ce TP (le fichier initial était beaucoup plus volumineux)_*
+
+```r
+###SNP filtering####
+#snp <- gl.filter.allna(gl)
+#snp2<-gl.recalc.metrics(snp)
+#snp3<-gl.filter.monomorphs(snp2)
+#snp4<-gl.recalc.metrics(snp3)
+#snp4
+```
+
+
+Filtres pour enlever les données manquantes (loci 99.5% et individu 97%) et les doublons
+```r
+gl2 <- gl.filter.callrate(gl, method = "loc", threshold = 0.95) #filtre les loci avec plus de 5% de donnees manquantes
+
+gl3 <- gl.filter.secondaries(gl2) #filtres les loci doublons
+
+gl4 <- gl.filter.callrate(gl3, method = "ind", threshold = 0.80) #filtre les individus avec plus de 20% de donnees manquantes
+
+gl5 <- gl.filter.callrate(gl4, method = "loc", threshold = 0.97)#filtre les loci avec plus de 3% de donnees manquantes
+
+gl6 <- gl.filter.callrate(gl5, method = "ind", threshold = 0.97)#filtre les individus avec plus de 3% de donnees manquantes
+
+gl7 <- gl.filter.callrate(gl6, method = "loc", threshold = 0.995)#filtre les loci avec plus de 0,5% de donnees manquantes
+
+```
+Revisualiser les données
+
+```r
+gl.report.callrate(gl7)
+
+gl.report.callrate(gl7, method='ind')
+
+gl.smearplot(gl7)
+```
+![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/707316cb-457d-4fbe-9a70-b493c56f71d8)
+
+
+## Analyse de la structure de la diversité génétique avec une PCOA
+### Qu’est-ce qu’une PCOA ?
+L’Analyse des Coordonnées Principales (PCoA) est une analyse de type multivariée, ça signifie qu’elle intègre une variable dépendante (VD) et plus d’une variable indépendante (VI). Une PCoA est une analyse semblable à une PCA et permet de simplifier des données complexes. L’objectif de cette analyse est de réaliser un graphique qui nous permettra d’interpréter les différences génétiques entre des groupes et des individus. La PCoA va créer autant de nouvelles variables (PC) qu’il y a de variables indépendantes initiales (individus) et les deux plus informatives seront projetées. Chaque nouvelle variable contiendra de l’information sur l’ensemble des variables indépendantes initiales (individus).
 
 
 
 
 
-
-
-
-
-
-
-
-
- 
-## Qu’est-ce qu’une PCOA ?
-	L’Analyse des Coordonnées Principales (PCoA) est une analyse de type multivariée, ça signifie qu’elle intègre une variable dépendante (VD) et plus d’une variable indépendante (VI). Une PCoA est une analyse semblable à une PCA et permet de simplifier des données complexes. L’objectif de cette analyse est de réaliser un graphique qui nous permettra d’interpréter les différences génétiques entre des groupes et des individus. La PCoA va créer autant de nouvelles variables (PC) qu’il y a de variables indépendantes initiales (individus) et les deux plus informatives seront projetées. Chaque nouvelle variable contiendra de l’information sur l’ensemble des variables indépendantes initiales (individus).
-
-
-## Faire une PCoA sur Rstudio :
-
-Dans un premier temps, il faut télécharger et activer les librairies que nous allons utiliser dans l’analyse.
- 
-Ensuite, il faut donner à Rstudio l’accès à notre dossier dans lequel se trouvent nos fichier Dart. Pour ce faire nous utilisons la fonction « setwd ». Il faut prendre le chemin qui mène à votre dossier et le coller dans cette fonction. Attention au sens des « / » : il se peut que par default ils soient collés dans ce sens : « \ », dans ce cas il faut le changer.
-Voilà un exemple (à modifier selon la destination sur votre ordinateur) :
- 
-	Il faut maintenant créer l’objet qui correspondra à notre fichier. Pour ce faire, il faut s’assurer de bien avoir deux fichiers enregistrés en .csv : 1) un qui correspond au fichier snp reçut de la compagnie Dart, 2) un qui correspond à identification des individus et des populations qu’il faut créer soit même (ici nous avons déjà fait ce fichier pour vous).
-Forme fichier 1 :
- 
-Forme fichier 2 :
- 
-La fonction « gl.read.dart » est utilisée dans ce cas :
- 
-Dans cette fonction,
-« filename = » correspond au nom de fichier qu’il faut mettre le nom du fichier suivi de .csv ; « ind.metafile = » correspond au nom du fichier correspondant à l’identification des population .csv ; « nas = » ici on inscrit ce qui correspond aux données manquante ; « topskip = » il s’agit du nombre de ligne à passer dans le fichier pour arriver à la ligne où se trouve les identifiant des individus ici 6 lignes.
-	Une fois la fonction effectuée il faut vérifier que le fichier a bien été lu correctement. Pour cela, il faut cliquer sur l’objet dans l’environnement de Rstudio et vérifier le bon nombre d’individus (ici 161), le bon nombre de loci et les libellés des populations. 
- 
-1)	Utilisez la fonction nLoc(gl) pour déterminer le nombre de loci
-
-2)	Utilisez la fonction nInd(gl) pour déterminer le nombre d’individus
-
-3)	Utilisez la fonction nPop(gl) pour déterminer le nombre de populations
-
-4)	Utilisez la fonction  popNames(gl) pour obtenir le nom des populations
-
-PCoA sans filtres
-	Nous allons d’abord faire une analyse PCoA sans faire de filtre au préalable. Pour ce faire il faut performer les fonctions suivantes.
- 
-Dans ce cas ci (sans filtre) il est rare que la fonction fonctionne ou donne quelque chose de correct, car parmi les 6365 loci il y en a forcement quelques un qui on des problèmes (monomorphes, trop de données manquantes…). Il faut donc faire des filtres pour éliminer ces loci.
-PCoA avec filtres :
-
-Quand on fait des tests génétiques, surtout avec les snp il faut faire des filtres pour garder que les bons loci et les bons individus. Il est très important d’éliminer des loci avec beaucoup de données manquantes, ceux qui ne sont pas informatifs (monomorphes, dupliqués…). Aussi, les individus avec trop de données manquantes peuvent altérer les résultats (en étant rapprochés des individus ayant eux aussi des données manquantes au lieu de ceux lui ressemblant génétiquement), pour cette raison il faut aussi les enlever. Il est aussi important de les exclure car ils peuvent altérer les résultats d’autres analyses qui peuvent être faites comme des analyses de diversité génétique par exemple.
 Le premier filtre que nous allons faire est le filtre pour enlever les loci monomorphe grâce à cette fonction :
  
 	Pour chaque filtre effectué nous ne supprimons pas le fichier précédent, nous créons à chaque fois un nouvel objet (ici : gl1). Nous pouvons maintenant regarder combien de loci ont été enlevé en cliquant sur « gl1 » dans l’environnement de RStudio.
