@@ -12,16 +12,27 @@ Les **SNP**, ou single nucleotide polymorphisms, sont des mutations d'une seule 
 
 <img width="703" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/862d6576-7d0a-4a29-80e7-2a5143f880f8">
 
+Les données peuvent être représentées dans un tableau de bases SNP (A, T, C ou G), avec deux états pour chaque individu à chaque locus dans un organisme diploïde.Alternativement, comme les données sont bialléliques, il est pratique de coder les données comme 0 pour les homozyogotes pour un allèle, 1 pour les hétérozygotes et 2 pourhomozygotes de l’autre allèle.L'allèle de référence est arbitrairement choisi comme l'allèle le plus courant, donc 0 est le
+score pour un homozygote à l'allèle de référence, et 2 est le score pour un homozygote à l'allèle alternatif. NA indique que le SNP n’a pas pu être évalué. 
+	
+ <img width="538" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/cbd625a7-d3a1-4f25-ad7e-0c829691d16b">
+ <img width="533" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/6cf8379f-9540-438f-9b7a-193ae0b792e6">
 
 
-La PCoA :
+
+
+
+
+Nous allons voir comment , au préalable de l'analyse de la diversité génétique en elle même, ces données méritent d'être explorées et filtrées afin de s'assurer de leur robustesse (taux de données manquantes, neutralité...)
+
+Voici les packages R que nous allons utiliser dans ce TP. Les installer puis les appeler.
+
+
+
+
+ 
 ## Qu’est-ce qu’une PCOA ?
 	L’Analyse des Coordonnées Principales (PCoA) est une analyse de type multivariée, ça signifie qu’elle intègre une variable dépendante (VD) et plus d’une variable indépendante (VI). Une PCoA est une analyse semblable à une PCA et permet de simplifier des données complexes. L’objectif de cette analyse est de réaliser un graphique qui nous permettra d’interpréter les différences génétiques entre des groupes et des individus. La PCoA va créer autant de nouvelles variables (PC) qu’il y a de variables indépendantes initiales (individus) et les deux plus informatives seront projetées. Chaque nouvelle variable contiendra de l’information sur l’ensemble des variables indépendantes initiales (individus).
-	Les données qui devront être importées dans R seront sous la forme d’une variable dépendante (les loci) et de plusieurs variables indépendantes (les individus).
- 
-	1 allèle référence et 0 allèle alternative :0
-	0 allèle de référence et 1 allèle alternative : 2
-	1 allèle référence et 1 allèle alternative : 1
 
 
 ## Faire une PCoA sur Rstudio :
