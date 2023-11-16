@@ -21,11 +21,38 @@ score pour un homozygote à l'allèle de référence, et 2 est le score pour un 
 
 
 
-
+## Manipulation de données
 
 Nous allons voir comment , au préalable de l'analyse de la diversité génétique en elle même, ces données méritent d'être explorées et filtrées afin de s'assurer de leur robustesse (taux de données manquantes, neutralité...)
 
-Voici les packages R que nous allons utiliser dans ce TP. Les installer puis les appeler.
+Voici les packages R que nous allons utiliser dans ce TP. Les installer (si nécessaire) puis les appeler
+
+```r
+BiocManager::install(c("SNPRelate", "qvalue"))
+install.packages("plotly")
+```
+```r
+library(dartR)
+library(BiocManager)
+library(devtools)
+library(plotly)
+library(adegenet)
+library(ggplot2)
+```
+
+ouverture de fichier avec la fonction gl.read.dart
+Les données dartSeq sont composée de 2 fichier: un fichier de génotype et un fichier de métadata, c'est à dire toutes les infos complémentaire sur les individus génotypes (ex :lieu/date d'échantillonnage, taille, sexe, traitement expérimental ....)
+
+<img width="478" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/0480474a-cdc5-4481-8c19-62a7e337d2b2">
+
+```r
+# Définir le répertoire de travail par défaut 
+setwd("PATH_TO_TOUR_FILE")
+gl <- gl.read.dart(filename = "Zost_bonfichier.csv", ind.metafile= "Popidzostbonfichier(1).csv", nas = "-", topskip = 6, probar = TRUE)
+```
+
+
+
 
 
 
