@@ -1,4 +1,4 @@
-# TP8 Structure génétique chez les zostères à l’aide de données génomiques
+# Structure génétique chez les zostères à l’aide de données génomiques
 
 *_Objectif du laboratoire : Se familiariser avec la manipulation de données génomiques afin de réaliser des analyses statistiques dans R._*
 
