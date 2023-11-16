@@ -1,6 +1,19 @@
 # TP8 Structure génétique chez les zostères à l’aide de données génomiques
 
-Objectif du laboratoire : Se familiariser avec la manipulation de données génomiques afin de réaliser des analyses statistiques dans R.
+*_Objectif du laboratoire : Se familiariser avec la manipulation de données génomiques afin de réaliser des analyses statistiques dans R._*
+
+
+**DArTSeq** est une méthode qui extrait la variation génomique reproductible à travers les génomes de nombreux individus à un coût abordable. La technique
+digère l'ADN génomique à l'aide de paires d'enzymes de restriction (coupeurs). Quand l'ADN est coupé en deux endroits situés à une distance raisonnable l'un de l'autre, le fragment est disponible pour le séquençage à l’aide des plateformes de lecture courte Illumina. Par conséquent, les données sont représentatifs dans le sens où ils sont générés pour une sélection aléatoire de petits fragments de séquence uniquement, fragments qui présentent une variation au niveau de paires de bases uniques (SNP).
+
+<img width="680" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d1aef0a9-b383-489e-aae8-a3c7f7589793">
+
+Les **SNP**, ou single nucleotide polymorphisms, sont des mutations d'une seule paire de bases à un locus nucléaire. Ce locus nucléaire est représenté dans l'ensemble de données par deux séquences qui, sur un locus hétérozygote, prennent deux états alléliques, l'un appelé l'état de référence, l'autre comme état alternatif ou SNP.
+
+<img width="703" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/862d6576-7d0a-4a29-80e7-2a5143f880f8">
+
+
+
 La PCoA :
 ## Qu’est-ce qu’une PCOA ?
 	L’Analyse des Coordonnées Principales (PCoA) est une analyse de type multivariée, ça signifie qu’elle intègre une variable dépendante (VD) et plus d’une variable indépendante (VI). Une PCoA est une analyse semblable à une PCA et permet de simplifier des données complexes. L’objectif de cette analyse est de réaliser un graphique qui nous permettra d’interpréter les différences génétiques entre des groupes et des individus. La PCoA va créer autant de nouvelles variables (PC) qu’il y a de variables indépendantes initiales (individus) et les deux plus informatives seront projetées. Chaque nouvelle variable contiendra de l’information sur l’ensemble des variables indépendantes initiales (individus).
