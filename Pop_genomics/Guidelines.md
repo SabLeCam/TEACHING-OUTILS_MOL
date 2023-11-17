@@ -145,14 +145,16 @@ gl.pcoa.plot(pc7, gl7, label = "ind", xaxis=1, yaxis=2)
 <p align="center">
 <img width="702" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/a6abf8d9-9b5a-40a9-844e-f655808381ec">
 </p>
-<img width="271" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/11904561/5bf58e77-a73d-4d6c-9370-2f5ee62cb1ef">
-
 
 >Comment interprétez-vous le graphique obtenu ?
 
->Il y a-t-il des différences avec le graphique précédent ? si oui expliquez
 
 >Reprenez les mêmes commandes pour les laminaires (filename= Report_DSacc21-6007_3_moreOrders_SNP_2. Indmetafile= laminaria2.csv)
+
+Voici la carte d'échantillonnage des laminaires.
+<p align="center">
+<img width="752" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/32974c21-b99c-4b86-911f-87190221821b">
+</p>
 
 >En quoi les zostères diffèrent-elles des laminaires au niveau de leur structure populationnelle ?
 
