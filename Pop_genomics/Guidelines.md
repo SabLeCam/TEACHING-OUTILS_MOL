@@ -28,13 +28,16 @@ Nous allons voir comment , au préalable de l'analyse de la diversité génétiq
 Voici les packages R que nous allons utiliser dans ce TP. Les installer (si nécessaire) puis les appeler
 
 ```r
-BiocManager::install(c("SNPRelate", "qvalue"))
-install.packages("plotly")
-```
-```r
+install.packages("dartR")
 library(dartR)
-library(BiocManager)
+install.packages("devtools")
 library(devtools)
+install.packages("BiocManager")
+BiocManager::install(c("SNPRelate", "qvalue"))
+#ATTENTION dites non aux mises à jour !
+install_github("green-striped-gecko/dartR")
+library(dartR)
+install.packages("plotly")
 library(plotly)
 library(adegenet)
 library(ggplot2)
