@@ -150,6 +150,10 @@ gl.pcoa.plot(pc7, gl7, label = "ind", xaxis=1, yaxis=2)
 
 
 >Reprenez les mêmes commandes pour les laminaires (filename= Report_DSacc21-6007_3_moreOrders_SNP_2. Indmetafile= laminaria2.csv)
+>Pour ces fichiers, il y a des populations qui proviennent des USA et d'autres régions du monde et que nous n'utiliserons pas dans l'analyse. Il
+faut donc les enlever avec cette fonction
+
+#gl1<- gl.drop.pop(gl, pop.list=c("Denmark","Norway","russia","Iceland","Ireland","Korea","Alaska","Maine","Connecticut","Rhode_island","CapeCod","NewYork","NewHampshire","washington"))
 
 Voici la carte d'échantillonnage des laminaires.
 <p align="center">
