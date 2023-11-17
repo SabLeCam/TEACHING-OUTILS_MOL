@@ -19,7 +19,7 @@ score pour un homozygote à l'allèle de référence, et 2 est le score pour un 
  <img width="538" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/cbd625a7-d3a1-4f25-ad7e-0c829691d16b"> <img width="533" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/6cf8379f-9540-438f-9b7a-193ae0b792e6">
 
 
-Nous allons analyser un jeu de données de zostères echantillonné dans l'Estaire et le Golfe du Saint Laurent
+Nous allons analyser un jeu de données de zostères echantillonnées dans l'Estaire et le Golfe du Saint Laurent
 <p align="center">
 <img width="642" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/c2f4b779-d39f-4a2b-8d87-55cc428976f9">
 </p>
