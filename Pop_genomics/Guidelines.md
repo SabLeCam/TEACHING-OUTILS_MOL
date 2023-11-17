@@ -155,6 +155,7 @@ faut donc les enlever avec cette fonction
 
 ```r
 gl1<- gl.drop.pop(gl, pop.list=c("Denmark","Norway","russia","Iceland","Ireland","Korea","Alaska","Maine","Connecticut","Rhode_island","CapeCod","NewYork","NewHampshire","washington"))
+```
 
 Voici la carte d'échantillonnage des laminaires.
 <p align="center">
