@@ -26,6 +26,7 @@ phytools
 stringr
 msa
 pegas
+phangorn
 ```
 installer les packages necessaires et les appeler
 
@@ -45,10 +46,7 @@ stringr
 msa
 treetools
 pegas
-
-
-
-
+phangorn
 ```
 
 ## Importer des données
@@ -72,6 +70,7 @@ Aln_LDHA <- msa(seq_LDHA, method = "ClustalOmega", order="aligned")
 #export alignment as DNAbin object
 seq_align_LDHA <- msaConvert(Aln_LDHA, type="seqinr::alignment")
 ```
+## 
 
 ## Construire des phylogénies à partir des données moléculaires
 
@@ -103,8 +102,7 @@ tree <- nj(distxj_LDHA)
 #plot a basic tree
 plot.phylo(tree, type="phylogram", cex=0.4)
 ```
-<img width="1037" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/8750180d-0686-49d8-9a8f-6dbf0dec658c">
-
+<img width="932" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/6b257e5e-c48f-4661-a6fb-11218006b2a1">
 
 Exemples de représentations de l'arbre
 ```r
@@ -114,6 +112,7 @@ plot.phylo(x=tree, type="cladogram", edge.width=2, cex=0.3)
 plot.phylo(x=tree, type="fan", edge.width=2, edge.lty=2, cex=0.3)
 plot.phylo(x=tree, type="radial", edge.color="red", edge.width=2, edge.lty=3, cex=0.3)
 ```
+<img width="1330" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/ddea800e-3259-4176-a5f3-c429a11539e7">
 
 
 Bootstrap pour evaluer la robustesse des noeuds: technique de ré-échantillonnage qui permet d’estimer la probabilité de l’existence de chaque branche interne.
@@ -134,8 +133,7 @@ plot(tr, cex=0.3)
 nodelabels(round(bp/10), cex=0.5, adj=c(1,-0.2),frame="none")
 
 ```
-<img width="1273" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/80d35362-b1f8-438c-b3df-dc903460d3f2">
-
+<img width="1220" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/c3af8203-ba90-490a-873f-e0ef0b7337a0">
 
 mais ça n'est pas très lisible...
 
