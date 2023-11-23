@@ -44,7 +44,6 @@ geiger
 phytools
 stringr
 msa
-treetools
 pegas
 phangorn
 ```
