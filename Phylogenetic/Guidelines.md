@@ -228,7 +228,6 @@ nodelabels(bst, cex=0.8, adj=c(1,-0.6),frame="none")
 
 
 
-
 Décrivez les arbres produits par les deux méthodes. Est-ce-que les espèces sont bien séparées pour le gène mitochondrial ND5, le gène LDHA et LDHB ? 
 
 
