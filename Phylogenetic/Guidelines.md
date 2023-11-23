@@ -231,7 +231,7 @@ nodelabels(bst, cex=0.8, adj=c(1,-0.6),frame="none")
 
 Utilisez le "scritp générique dna" pour obtenir les arbres phylogénétiques des gènes ND5 et LDHB
 
-Utilisez le "scritp générique aa" pour obtenir les arbres phylogénétiques à partir des séquence de préotéines de 3 gènes
+Utilisez le "scritp générique aa" pour obtenir les arbres phylogénétiques à partir des séquences de protéines de LDHA et LDHB
 
 
 
