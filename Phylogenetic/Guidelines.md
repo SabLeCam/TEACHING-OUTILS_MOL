@@ -223,9 +223,7 @@ nodelabels(bst, cex=0.8, adj=c(1,-0.6),frame="none")
 ```
 
 
-<img width="1356" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/a72ccb22-9298-4ec7-944a-bf2fc2a765ed">
-
-
+<img width="1354" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/bef4b665-63b3-4912-a865-d611e48455f6">
 >Refaire pour le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine
 
 
