@@ -81,7 +81,7 @@ LDHA_C <- seq_LDHA[grep("LDHA-C",rownames(seq_LDHA)),]
 LDHA_C
 nuc.div(LDHA_C)
 ```
-
+>Faites de même avec tous les groupes (C, CX et X)
 
 
 ## Construire des phylogénies à partir des données moléculaires
@@ -123,6 +123,7 @@ plot.phylo(tree, type="phylogram", cex=0.3)
 plot.phylo(x=tree, type="cladogram", edge.width=2, cex=0.3)
 plot.phylo(x=tree, type="fan", edge.width=2, edge.lty=2, cex=0.3)
 plot.phylo(x=tree, type="radial", edge.color="red", edge.width=2, edge.lty=3, cex=0.3)
+par(mfrow=c(1,1))
 ```
 <img width="1330" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/ddea800e-3259-4176-a5f3-c429a11539e7">
 
@@ -184,9 +185,10 @@ legend(x="bottomleft", legend=c("C","CX","Outgroup","X"), border="black",
        fill=cols, pt.lwd=2, pt.cex=1.5, bty="o", bg="lightgrey", box.lwd=1, cex=1.2, title="Famille")
 
  ```
-<img width="670" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9bbb8a35-493a-440f-98eb-b75f8f0d3c8c">
+<img width="1339" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/2657da71-3469-4346-939b-495655baf0d9">
 
->Refaire  le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine.
+
+>Refaire  le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine.Utilisez le script générique à la fin du document
 
 
 ## Partie II: Maximum de vraisemblance
@@ -211,7 +213,7 @@ bst <- BStree$node.label
 
 rootedtree <- root(as.phylo(fitJC$tree), outgroup)
 #présenter les groupes par couleur
-plot.phylo(x=rootedtree, type="phylogram", show.tip=FALSE, lwd=3, main="Neighbour-Joining tree")
+plot.phylo(x=rootedtree, type="phylogram", show.tip=FALSE, lwd=3, main="Max Vraisemblance tree LDHA")
 #add axis with distances
 axisPhylo()
 
@@ -221,7 +223,7 @@ nodelabels(bst, cex=0.8, adj=c(1,-0.6),frame="none")
 ```
 
 
-<img width="1398" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/3f886610-8524-45d5-85c1-ae388f68c452">
+<img width="1356" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/a72ccb22-9298-4ec7-944a-bf2fc2a765ed">
 
 
 >Refaire pour le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine
