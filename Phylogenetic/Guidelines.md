@@ -6,8 +6,12 @@
 Objectif : Construire des arbres phylogénétiques pour observer l’évolution de la lactate déshydrogénase chez les daphnies à l’aide de différentes méthodes de reconstruction.
 
 
-Les microcrustacés du genre Daphnia sont très répandus dans les écosystèmes d’eau douce de l’hémisphère nord. On y retrouve deux espèces écologiquement distinctes : Daphnia pulex dans les étangs et Daphnia pulicaria dans les lacs. Ces deux espèces sœurs ont divergé il y a environ 80,000 ans. Elles produisent des hybrides F1 qui peuvent se rétro-croiser avec les espèces parentales. Ces deux espèces sont morphologiquement très semblables et ne peuvent être distinguées qu’à l’aide du gène ND5 du génome mitochondrial ainsi que du gène de la lactate désydrogénase A.  D. pulex possède l’allèle ‘slow’ pour cet enzyme et D. pulicaria la forme ‘fast’. Leurs hybrides F1 sont hétérozygotes pour les deux allèles.
-Le séquençage complet du génome de Daphnia pulex a révélé une deuxième forme de la lactate désydrogénase : la B. Ce gène est vraisemblablement apparu par duplication et nous ne connaissons pas sa fonction. Il est possible qu’il s’agisse d’un pseudogène. Les mutations sont plus susceptibles de s’accumuler sur les pseudogènes puisqu’ils ne sont pas sous sélection pour maintenir une fonction précise dans le génome. Ils sont alors libres d’accumuler plus de mutations. 
+Les microcrustacés du genre *_Daphnia_* sont très répandus dans les écosystèmes d’eau douce de l’hémisphère nord. On y retrouve deux espèces écologiquement distinctes : *_Daphnia pulex_* dans les étangs et *_Daphnia pulicaria_* dans les lacs. Ces deux espèces sœurs ont divergé il y a environ 80,000 ans. Elles produisent des hybrides F1 qui peuvent se rétro-croiser avec les espèces parentales. Ces deux espèces sont morphologiquement très semblables et ne peuvent être distinguées qu’à l’aide du **gène ND5** du génome mitochondrial ainsi que du gène de la **lactate désydrogénase A**.  *_D. pulex_* possède l’allèle *‘slow’* pour cet enzyme et *_D. pulicaria_* la forme *‘fast’*. Leurs hybrides F1 sont hétérozygotes pour les deux allèles.
+Le séquençage complet du génome de *_Daphnia pulex_* a révélé une deuxième forme de la lactate désydrogénase : *la B*. Ce gène est vraisemblablement apparu par duplication et nous ne connaissons pas sa fonction. Il est possible qu’il s’agisse d’un pseudogène. Les mutations sont plus susceptibles de s’accumuler sur les pseudogènes puisqu’ils ne sont pas sous sélection pour maintenir une fonction précise dans le génome. Ils sont alors libres d’accumuler plus de mutations. 
+
+<p align="center">
+<img width="149" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/01a513af-ab2c-4323-bd0a-88097c74356f">
+</p>
 
 
 Ici vous trouverez comment réaliser l'enesemble des analyses de phylogénétique comparative sous R
@@ -19,10 +23,9 @@ adegenet
 ape
 geiger
 phytools
-picante
 stringr
 msa
-caper
+pegas
 ```
 installer les packages necessaires et les appeler
 
@@ -31,17 +34,17 @@ if (!requireNamespace("BiocManager", quietly=TRUE))
     install.packages("BiocManager")
 BiocManager::install("msa")
 
-install.packages("caper") ##continue with following package names
-library(caper) ##continue with following packages
+install.packages("adegenet") ##continue with following package names
+library(adegenet) ##continue with following packages
 
 adegenet
 ape
 geiger
 phytools
-picante
 stringr
 msa
 treetools
+pegas
 
 
 
@@ -53,73 +56,83 @@ treetools
 
 
 ```r
-seq <-read.dna("fish_16S.fasta", format="fasta")
+seq_LDHA <-read.dna("LDHA_nuc_121.fas", format="fasta")
 ##check your sequences
-image(seq)
-
-path<-'PATH_TO_YOUR_FASTA_FILE'
-
-seq <-Biostrings::readDNAStringSet(path)# load file
-seq
-
+image(seq_LDHA)
 ```
 
 ## Aligner les sequences
 
+Ici les séquences sont déjà alignées mais pour information voici la marche à suivre pour les aligner
+
 ```r
-Aln <- msa(seq, method = "ClustalOmega", order="aligned")
+seq_LDHA <-Biostrings::readDNAStringSet("LDHA_nuc.fas")# load file
+seq_LDHA
+Aln_LDHA <- msa(seq_LDHA, method = "ClustalOmega", order="aligned")
 #export alignment as DNAbin object
-seq_align <- msaConvert(Aln, type="seqinr::alignment")
+seq_align_LDHA <- msaConvert(Aln_LDHA, type="seqinr::alignment")
 ```
 
 ## Construire des phylogénies à partir des données moléculaires
 
+## Partie I: Neighbor-joining
+
 Calculer une matrice de distance basée sur le nombre de différences nucléotidiques
 ```r
 ?dist.dna()###regarder les différents modèles d'évolution moléculaire disponibles
-distxj<-dist.dna(seq_align)
+distxj<-dist.dna(seq_LDHA)
 ```
 
+Produisez des arbres en neighbor-joining pour les trois gènes
+
+Neighbor-Joining: méthode de reconstruction phylogénétique se basant sur les distances évolutives. À partir des distances mesurées entre chaque séquence on part d’un arbre en étoile (i.e les séquences sont placées arbitrairement les unes par rapport aux autres). Puis, on calcule pour chaque paire de séquence la longueur des branches entre celles-ci. On retient la paire de séquence pour laquelle la longueur minimale des branches est obtenue; puis on les regroupe. On recommence avec les N-2 séquences restantes et jusqu’à avoir placé toutes les séquences.
 
 # Construire un arbre avec la méthode du neighbor-joining
 ```r
-tree <- nj(distxj)
+tree <- nj(distxj_LDHA)
 #plot a basic tree
-plot.phylo(tree, type="phylogram")
+plot.phylo(tree, type="phylogram", cex=0.4)
 ```
-![image](https://user-images.githubusercontent.com/20643860/219545168-19ba9230-fc18-4eab-aa21-e6464b8dba6f.png)
+<img width="1037" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/8750180d-0686-49d8-9a8f-6dbf0dec658c">
+
 
 Exemples de représentations de l'arbre
 ```r
 par(mfrow=c(2,2)) #plot 2 rows by 2 columns
-plot.phylo(tree, type="phylogram")
-plot.phylo(x=tree, type="cladogram", edge.width=2)
-plot.phylo(x=tree, type="fan", edge.width=2, edge.lty=2, cex=.8)
-plot.phylo(x=tree, type="radial", edge.color="red", edge.width=2, edge.lty=3, cex=.8)
+plot.phylo(tree, type="phylogram", cex=0.3)
+plot.phylo(x=tree, type="cladogram", edge.width=2, cex=0.3)
+plot.phylo(x=tree, type="fan", edge.width=2, edge.lty=2, cex=0.3)
+plot.phylo(x=tree, type="radial", edge.color="red", edge.width=2, edge.lty=3, cex=0.3)
 ```
-![image](https://user-images.githubusercontent.com/20643860/219545266-2ea7772e-f342-40ce-8913-8e4dd23d133e.png)
 
-Bootstrap pour evaluer la robustesse des noeuds
+
+Bootstrap pour evaluer la robustesse des noeuds: technique de ré-échantillonnage qui permet d’estimer la probabilité de l’existence de chaque branche interne.
+
 
 ```r
-TipLabels(tree) # connaitre la position de notre outgroup
-outgroup <- 2  
+tree$tip.labeln# connaitre la position de notre outgroup
+outgroup<-1  
+
 #fonction pour enraciner l'arbre:
-  foo <- function(xx) root(nj(dist.dna(xx)), outgroup)
-tr <- foo(seq_align) 
-bp <- boot.phylo(tr, seq_align, foo, B=1000) #1000 bootstraps
+foo <- function(xx) root(nj(dist.dna(xx)), outgroup)
+tr <- foo(seq_LDHA) 
+bp <- boot.phylo(tr, seq_LDHA, foo, B=1000) #1000 bootstraps
+
 
 #représentation graphique de l'arbre avec les valeur de boostrap pour les noeuds
-  plot(tr)
-nodelabels(round(bp/10))
+plot(tr, cex=0.3)
+nodelabels(round(bp/10), cex=0.5, adj=c(1,-0.2),frame="none")
+
 ```
 ![image](https://user-images.githubusercontent.com/20643860/219698076-aa703587-2dc4-4748-b337-de87759cd0ba.png)
 
 
 
-Représenter les familles plutôt que les noms scientifiques et utiliser des symboles
+Représenter les groupes plutôt que les noms de séquence et utiliser des symboles
 
 ```r
+#créer un vecteur avec les noms des groupes seulement
+
 plot.phylo(x=tr, type="cladogram", show.tip=FALSE, lwd=3, main="Neighbour-Joining tree")
 #add axis with distances
 axisPhylo()
@@ -221,6 +234,16 @@ add.simmap.legend(colors=cols,prompt=TRUE,fsize=0.8,vertical=TRUE, shape="square
 ```
 
 ![image](https://user-images.githubusercontent.com/20643860/219701552-8f3619fe-daa8-4a16-b1a5-2e6b550a734c.png)
+
+```r
+## diversité nucleotidique totale
+nuc.div(seq_LDHA)
+
+## diversité nucleotidique totale par groupe
+LDHA_C <- seq_LDHA[grep("LDHA-C",rownames(seq_LDHA)),]
+LDHA_C
+nuc.div(LDHA_C)
+```
 
 
 
