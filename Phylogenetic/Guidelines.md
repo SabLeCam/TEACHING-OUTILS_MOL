@@ -183,10 +183,39 @@ legend(x="bottomleft", legend=c("C","CX","Outgroup","X"), border="black",
 
 Maximum de vraisemblance: Méthode qui mathématise le processus évolutif. Cette méthode consiste à définir les probabilités de tous les évènements évolutifs possibles à partir de n’importe quelle séquence ancestrale jusqu’aux feuilles et à trouver  le scenario le plus probable qui a permis d’aboutir aux séquences analysées. Le scénario se matérialise sous la forme d’un arbre avec une certaine topologie et des longueurs de branches particulières. 
 
+```r
+#on recalcule l'arbre de NJ avec un autre package pour avoir le bon format
+seq_LDHA_NJ<-NJ(seq_LDHA)
+
+fit <- pml(seq_LDHA_NJ, seq_LDHA2)
+print(fit)
+fitJC <- optim.pml(fit, model = "JC", rearrangement = "stochastic")
+logLik(fitJC)
+bs <- bootstrap.pml(fitJC, bs=100, optNni=TRUE, multicore=TRUE, control = pml.control(trace=0))
+```
+
+```r
+BStree<-plotBS(midpoint(fitJC$tree), bs, p = 50, type="p")
+bst <- BStree$node.label
 
 
+rootedtree <- root(as.phylo(fitJC$tree), outgroup)
+#présenter les groupes par couleur
+plot.phylo(x=rootedtree, type="phylogram", show.tip=FALSE, lwd=3, main="Neighbour-Joining tree")
+#add axis with distances
+axisPhylo()
 
-Refaire pour le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine
+cols<-setNames(c("Green","White","Blue","Red"), sort(unique(gpname)))
+tiplabels(pie=to.matrix(gpname,sort(unique(gpname))),piecol=cols,cex=0.2)
+nodelabels(bst, cex=0.8, adj=c(1,-0.6),frame="none")
+```
+
+
+<img width="1398" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/3f886610-8524-45d5-85c1-ae388f68c452">
+
+
+>Refaire pour le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine
+
 
 
 
