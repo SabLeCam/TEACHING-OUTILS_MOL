@@ -70,7 +70,20 @@ Aln_LDHA <- msa(seq_LDHA, method = "ClustalOmega", order="aligned")
 #export alignment as DNAbin object
 seq_align_LDHA <- msaConvert(Aln_LDHA, type="seqinr::alignment")
 ```
-## 
+## Calculer la diversité nucléotidique totale et par groupe
+
+```r
+# diversité nucleotidique totale
+nuc.div(seq_LDHA)
+```
+```r
+# diversité nucleotidique totale par groupe
+LDHA_C <- seq_LDHA[grep("LDHA-C",rownames(seq_LDHA)),]
+LDHA_C
+nuc.div(LDHA_C)
+```
+
+
 
 ## Construire des phylogénies à partir des données moléculaires
 
