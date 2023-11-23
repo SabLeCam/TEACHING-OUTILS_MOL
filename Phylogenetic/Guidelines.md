@@ -150,7 +150,7 @@ table(gpname)
 
 #présenter les groupes par formes
 
-plot.phylo(x=tr, type="phylogram", show.tip=FALSE, lwd=3, main="Neighbour-Joining tree")
+plot.phylo(x=tr, type="phylogram", show.tip=FALSE, lwd=3, main="Neighbour-Joining tree LDHA")
 #add axis with distances
 axisPhylo()
 #use symbols (pch) for tip labels
@@ -163,7 +163,7 @@ ou
 
 ```r
 #présenter les groupes par couleur
-plot.phylo(x=tr, type="phylogram", show.tip=FALSE, lwd=3, main="Neighbour-Joining tree")
+plot.phylo(x=tr, type="phylogram", show.tip=FALSE, lwd=3, main="Neighbour-Joining tree LDHA")
 #add axis with distances
 axisPhylo()
 
@@ -176,7 +176,7 @@ legend(x="bottomleft", legend=c("C","CX","Outgroup","X"), border="black",
  ```
 <img width="670" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/9bbb8a35-493a-440f-98eb-b75f8f0d3c8c">
 
->Refaire pour le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine.
+>Refaire  le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine.
 
 
 ## Partie II: Maximum de vraisemblance
