@@ -250,7 +250,7 @@ Utilisez le "scritp générique aa" pour obtenir les arbres phylogénétiques à
 >4. Est-ce-que les arbres pour la LDH sont congruents (concordent) avec la phylogénie du gène mitochondrial ND5 du complexe Daphnia pulex ?  Si non pourquoi ?
 
 
-## Script générique pour les sequence nucléotidique pour tous les gènes:
+## Script générique pour les sequences nucléotidiques pour tous les gènes:
 ```r
 ########generic script dna#####
 
@@ -319,6 +319,43 @@ cols<-setNames(c("Green","White","Blue","Red"), sort(unique(gpname)))
 tiplabels(pie=to.matrix(gpname,sort(unique(gpname))),piecol=cols,cex=0.2)
 nodelabels(y, cex=0.8, adj=c(1,-0.6),frame="none")
 legend(x="bottomleft", legend=c("C","CX","Outgroup","X"), border="black",
+       fill=cols, pt.lwd=2, pt.cex=0.8, bty="o", bg="lightgrey", box.lwd=1, cex=0.8, title="Famille")
+```
+
+## Script générique pour les sequences protéiques de LDHA et LDHB :
+```r
+
+gene_name<-substr(labels(seq),0, 4)
+
+#Distance Matrices
+distxj<-dist.ml(seq, model="JC69")
+
+tree <- nj(distxj)
+
+tree$tip.label
+outgroup<-1 #EPX
+
+#fonction pour enraciner l'arbre:
+foo <- function(xx) root(nj(dist.ml(xx)), outgroup)
+tr <- foo(seq) 
+bp <- bootstrap.phyDat(seq, foo, bs=100) #100 bootstraps
+
+treeBS <- plotBS(tr,bp)
+y <- treeBS$node.label
+
+###creer un vecteur de nom  de groupe
+gpname<-substr(tree$tip.label, 0, 7)
+table(gpname)
+
+#présenter les groupes par couleur
+plot.phylo(x=tr, type="phylogram", show.tip=FALSE, lwd=3, main= paste("NJoining tree AAseq", gene_name[1]))
+#add axis with distances
+axisPhylo()
+
+cols<-setNames(c("Green","White","blue","Red"), sort(unique(gpname)))
+tiplabels(pie=to.matrix(gpname,sort(unique(gpname))),piecol=cols,cex=0.2)
+nodelabels(y, cex=0.5, adj=c(1,-0.2),frame="none")
+legend(x="bottomright", legend=c("C","CX","Outgroup","X"), border="black",
        fill=cols, pt.lwd=2, pt.cex=0.8, bty="o", bg="lightgrey", box.lwd=1, cex=0.8, title="Famille")
 ```
 
