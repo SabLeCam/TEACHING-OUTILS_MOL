@@ -324,7 +324,11 @@ legend(x="bottomleft", legend=c("C","CX","Outgroup","X"), border="black",
 
 ## Script générique pour les sequences protéiques de LDHA et LDHB :
 ```r
+#########generic script aa#################
 
+aa<-"LDHB_aa_121.fas"
+
+seq<-read.phyDat(aa, format = "fasta", type = "AA")
 gene_name<-substr(labels(seq),0, 4)
 
 #Distance Matrices
