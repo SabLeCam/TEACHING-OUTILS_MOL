@@ -110,7 +110,7 @@ distxj<-dist.dna(seq_LDHA, model="JC69")
 
 # Construire un arbre avec la méthode du neighbor-joining
 ```r
-tree <- nj(distxj_LDHA)
+tree <- nj(distxj)
 #plot a basic tree
 plot.phylo(tree, type="phylogram", cex=0.4)
 ```
