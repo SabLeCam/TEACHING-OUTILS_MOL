@@ -250,6 +250,81 @@ Utilisez le "scritp générique aa" pour obtenir les arbres phylogénétiques à
 >4. Est-ce-que les arbres pour la LDH sont congruents (concordent) avec la phylogénie du gène mitochondrial ND5 du complexe Daphnia pulex ?  Si non pourquoi ?
 
 
+## Script générique pour tous les gènes:
+```r
+########generic script dna#####
+
+
+dna<-"ND5_TP.fasta"
+#import data
+seq <-read.dna(dna, format="fasta")
+gene_name<-substr(rownames(seq),0, 4)
+
+#Model Testing and Distance Matrices
+seq2<-as.phyDat(seq)
+mt <- modelTest(seq2)
+print(mt)
+
+
+
+distxj<-dist.dna(seq, model="JC69")
+tree <- nj(distxj)
+
+tree$tip.label
+outgroup<-1 #"LDHB-EPX_CZR" 
+
+#fonction pour enraciner l'arbre:
+foo <- function(xx) root(nj(dist.dna(xx)), outgroup)
+tr <- foo(seq) 
+bp <- boot.phylo(tr, seq, foo, B=1000) #1000 bootstraps
+
+
+###creer un vecteur de nom  de groupe
+gpname<-substr(tree$tip.label, 0, 7)
+table(gpname)
+
+#présenter les groupes par couleur
+plot.phylo(x=tr, type="phylogram", show.tip=FALSE, lwd=3, main= paste("NJ tree ", gene_name[1]))
+#add axis with distances
+axisPhylo()
+
+cols<-setNames(c("Green","White","Blue","Red"), sort(unique(gpname)))
+tiplabels(pie=to.matrix(gpname,sort(unique(gpname))),piecol=cols,cex=0.2)
+nodelabels(round(bp/10), cex=0.5, adj=c(1,-0.2),frame="none")
+legend(x="bottomleft", legend=c("C","CX","Outgroup","X"), border="black",
+       fill=cols, pt.lwd=2, pt.cex=0.8, bty="o", bg="lightgrey", box.lwd=1, cex=0.8, title="Famille")
+
+#maximum de vraisemblance
+seq_NJ<-NJ(distxj)
+fit <- pml(seq_NJ, seq2)
+print(fit)
+fitJC <- optim.pml(fit, model = "JC", rearrangement = "stochastic")
+#pour ND5
+#fitJC <- optim.pml(fit)
+logLik(fitJC)
+bs <- bootstrap.pml(fitJC, bs=100, optNni=TRUE, multicore=TRUE, control = pml.control(trace=0))
+
+BStree<-plotBS(midpoint(fitJC$tree), bs, p = 50, type="p")
+y <- BStree$node.label
+
+gpname<-substr(fitJC$tree$tip.label, 0, 7)
+table(gpname)
+rootedtree <- root(as.phylo(fitJC$tree), outgroup)
+#présenter les groupes par couleur
+plot.phylo(x=rootedtree, type="phylogram", show.tip=FALSE, lwd=3, main=paste("Max vraisemblance", gene_name[1]))
+#add axis with distances
+axisPhylo()
+
+cols<-setNames(c("Green","White","Blue","Red"), sort(unique(gpname)))
+tiplabels(pie=to.matrix(gpname,sort(unique(gpname))),piecol=cols,cex=0.2)
+nodelabels(y, cex=0.8, adj=c(1,-0.6),frame="none")
+legend(x="bottomleft", legend=c("C","CX","Outgroup","X"), border="black",
+       fill=cols, pt.lwd=2, pt.cex=0.8, bty="o", bg="lightgrey", box.lwd=1, cex=0.8, title="Famille")
+```
+
+
+
+
 
 
 
