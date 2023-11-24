@@ -227,27 +227,26 @@ nodelabels(bst, cex=0.8, adj=c(1,-0.6),frame="none")
 >Refaire pour le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine
 
 
-## Phylogénéitque comparative
+## Phylogénétique comparative
 
-Utilisez le "scritp générique dna" pour obtenir les arbres phylogénétiques des gènes ND5 et LDHB
+Utilisez le "script générique dna" pour obtenir les arbres phylogénétiques des gènes ND5 et LDHB
 
 Utilisez le "scritp générique aa" pour obtenir les arbres phylogénétiques à partir des séquences de protéines de LDHA et LDHB
 
 
 
->Décrivez les arbres produits par les deux méthodes. Est-ce-que les espèces sont bien séparées pour le gène mitochondrial ND5, le gène LDHA et LDHB ?
+>1.Décrivez les arbres produits par les deux méthodes. Est-ce-que les espèces sont bien séparées pour le gène mitochondrial ND5, le gène LDHA et LDHB ?
 
->Ou se situent les hybrides ?
+>2.Ou se situent les hybrides ?
 
->Rapporter les indices de diversité nucléotidiques (pi) pour chacune des espèces pour la LDHA et la LDHB ainsi que pour l’ensemble des séquences pour la LDHA et la LDHB.
+>3.Rapporter les indices de diversité nucléotidiques (pi) pour chacune des espèces pour la LDHA et la LDHB ainsi que pour l’ensemble des séquences pour la LDHA et la LDHB.
 
->1.Quelle est la divergence nucléotidique entre les espèces pour les séquences nucléotidiques de LDHA et LDHB ?
 
->2. Quelle espèce possède le plus grand niveau de polymorphisme nucléotidique pour la LDHA et pour la LDHB ?
+>. 4.Quelle espèce possède le plus grand niveau de polymorphisme nucléotidique pour la LDHA et pour la LDHB ?
 
->3. Est-ce-que le gène LDHA est plus variable que le gène LDHB au niveau nucléotidique? Au niveau des acides aminés ?
+>5. Est-ce-que le gène LDHA est plus variable que le gène LDHB au niveau nucléotidique? Au niveau des acides aminés ?
 
->4. Est-ce-que les arbres pour la LDH sont congruents (concordent) avec la phylogénie du gène mitochondrial ND5 du complexe Daphnia pulex ?  Si non pourquoi ?
+>6. Est-ce-que les arbres pour la LDH sont congruents (concordent) avec la phylogénie du gène mitochondrial ND5 du complexe Daphnia pulex ?  Si non pourquoi ?
 
 
 ## Script générique pour les sequences nucléotidiques pour tous les gènes:
