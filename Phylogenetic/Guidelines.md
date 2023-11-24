@@ -197,7 +197,7 @@ Maximum de vraisemblance: Méthode qui mathématise le processus évolutif. Cett
 
 ```r
 #on recalcule l'arbre de NJ avec un autre package pour avoir le bon format
-seq_LDHA_NJ<-NJ(seq_LDHA)
+seq_LDHA_NJ<-NJ(distxj)
 
 fit <- pml(seq_LDHA_NJ, seq_LDHA2)
 print(fit)
