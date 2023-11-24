@@ -271,7 +271,7 @@ distxj<-dist.dna(seq, model="JC69")
 tree <- nj(distxj)
 
 tree$tip.label
-outgroup<-1 #"LDHB-EPX_CZR" 
+outgroup<-1 #"EPX" 
 
 #fonction pour enraciner l'arbre:
 foo <- function(xx) root(nj(dist.dna(xx)), outgroup)
