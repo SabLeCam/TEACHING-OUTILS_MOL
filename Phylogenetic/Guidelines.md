@@ -250,7 +250,7 @@ Utilisez le "scritp générique aa" pour obtenir les arbres phylogénétiques à
 >4. Est-ce-que les arbres pour la LDH sont congruents (concordent) avec la phylogénie du gène mitochondrial ND5 du complexe Daphnia pulex ?  Si non pourquoi ?
 
 
-## Script générique pour tous les gènes:
+## Script générique pour les sequence nucléotidique pour tous les gènes:
 ```r
 ########generic script dna#####
 
