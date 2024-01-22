@@ -50,7 +50,7 @@ Donnez les valeurs de couverture, la e-value, l’identité ainsi que le numéro
 ```
 
 
-## B) Détermination du barcode gap chez Aurelia, Poecile, Oncorhynchus,Salvelinus 
+## B) Détermination du barcode gap chez Aurelia, Poecile, Oncorhynchus, Salvelinus 
 (crédit photo wikipédia)
 
 <p float="left">
