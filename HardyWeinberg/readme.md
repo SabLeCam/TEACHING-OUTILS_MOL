@@ -31,7 +31,7 @@ install.packages("ggplot2")
 install.packages("(RColorBrewer")
 install.packages("scales")
 install.packages("poppr")
-install.packages("dartR")
+install.packages("dartReverse")
 ```
 
 
@@ -46,7 +46,7 @@ library("ggplot2")
 library("RColorBrewer")
 library("scales")
 library("poppr")
-library("dartR")
+library("dartReverse")
 ```
 Télécharger le fichiers de données sur votre ordinateur dans un dossier TPHW que vous aurez créer.
 Définir le dossier TPHW comme "working directory", l'endroit où se trouve vos fichiers de données.
