@@ -226,7 +226,7 @@ ArmI_2,	254265	000000	174174	148171	235235	358367	238240	151151	253253	144144	21
 ArmI_3,	237245	114114	174174	168168	235235	358361	230238	151151	253253	149149	000000	000000	354354
 ArmI_4,	245254	114114	174174	160168	235235	361367	238238	151151	253253	144149	000000
 ```
-Importer le fichier  (format genepop) et le convertir en objet genind. Vérifiez que les génotypes au locus  Ever002 pour trois individus choisis au hasard sont conformes.
+Importer le fichier  (format genepop) et le convertir en objet genind. Vérifiez que les génotypes au locus  Ever002 pour trois individus choisis au hasard sont conformes en validant avec le fichier genepop.
 ```r
 seafan_gen = import2genind("Pinkseafan_13MicrosatLoci.gen", ncode = 3, quiet = TRUE)
 set.seed(1)
