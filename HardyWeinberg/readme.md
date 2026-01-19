@@ -523,12 +523,24 @@ ggplot(Fis, aes(x=rownames(Fis),y=meanFis)) +        # ggplot2 plot with confide
 ```
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/fdcb5d6d-5574-46de-819a-a623a411101d)
 
-        
+ On peut également utiliser la fonction summary() pour obtenir les données de bases de la diversité génétique du jeu de données  
 
+ ```r
+ div<-summary(dataset)
+```
+Et aussi faire des graphiques
+
+```r
+barplot(div$n.by.pop, col=funky(17), las=3,
+        xlab="Population", ylab="Sample size")
+```
+
+Avec le même principe essaye d'obtenir i) le nb d'allèles par locus, ii) le nb d'allèle par pop
 
 On peut tester l'ecart à HW de chaque locus
 ```r
 hw.test(lobster_gen)
+```
 
 Et tester si He et Ho sont signicativement différents (ecart à HW)
 
