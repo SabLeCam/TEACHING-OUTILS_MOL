@@ -550,3 +550,8 @@ t.test(div$Hexp, div$Hobs, pair = T, var.equal = TRUE, alter = "greater")
 ```
 Recommencer avec les données des gorgones
 
+**Questions**
+1) Rapporter les différentes mesures de diversité génétique pour ces deux études
+2) Quelles sont les principales différences entre les mesures estimées par les microsatellites et par les SNP
+3) Quelles locus ne sont pas à l'équilibre de Hardy-Weinberg chez les homards ? Chez les gorgones ?
+4) Quelles 'sites' rapportent des Fis différents de 0 chez les homards ? Chez les gorgones ?
