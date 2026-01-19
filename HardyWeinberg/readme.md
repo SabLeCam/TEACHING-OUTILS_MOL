@@ -544,9 +544,9 @@ hw.test(lobster_gen)
 
 Et tester si He et Ho sont signicativement différents (ecart à HW)
 
-
+```r
 bartlett.test(list(div$Hexp, div$Hobs))
 t.test(div$Hexp, div$Hobs, pair = T, var.equal = TRUE, alter = "greater")
-
+```
 Recommencer avec les données des gorgones
 
