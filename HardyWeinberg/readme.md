@@ -550,8 +550,13 @@ t.test(div$Hexp, div$Hobs, pair = T, var.equal = TRUE, alter = "greater")
 ```
 Recommencer avec les données des gorgones
 
+Pour explorer les tests exacts de Hardy-Weinberg à l'aide du logiciel 'Genepop', allez sur le lien suivant https://genepop.curtin.edu.au/cgi-bin/genepop4.cgi. Téléchargez le fichier 'pinksean_13MicrosatLoci.gen. Ouvrez le à l'aide d'un éditeur texte et collez les données dans genepop.
+Allez à l'option 1 et cochez 3 pour probability test.
+Vérifiez si les loci et les populations sont à l'équilibre de Hardy-Weinberg.
+
 **Questions**
 1) Rapporter les différentes mesures de diversité génétique pour ces deux études
 2) Quelles sont les principales différences entre les mesures estimées par les microsatellites et par les SNP
 3) Quelles locus ne sont pas à l'équilibre de Hardy-Weinberg chez les homards ? Chez les gorgones ?
 4) Quelles 'sites' rapportent des Fis différents de 0 chez les homards ? Chez les gorgones ?
+5) Y-a-t'il des populations de gorgones qui ne sont pas à l'équilibre de hardy-Weinberg.
