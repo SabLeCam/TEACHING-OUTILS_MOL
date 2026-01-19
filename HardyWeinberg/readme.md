@@ -12,7 +12,7 @@ Le jeu de données est issu des articles suivants:
 
 Calculer les indices de diversité génétique de base:
 
-  - Polymorphisme/fréquence allèliques
+  - Polymorphisme/fréquence alléliques
   - Diversité génetique (hétérozygotie  attendue et observée)
   - Test d'écart à l'équilibre de Hardy Weinberg
 
@@ -32,6 +32,7 @@ install.packages("(RColorBrewer")
 install.packages("scales")
 install.packages("poppr")
 install.packages("dartRverse")
+install.packages("pegas")
 ```
 
 
@@ -47,6 +48,7 @@ library("RColorBrewer")
 library("scales")
 library("poppr")
 library("dartRverse")
+library("pegas")
 ```
 Télécharger le fichiers de données sur votre ordinateur dans un dossier TPHW que vous aurez créer.
 Définir le dossier TPHW comme "working directory", l'endroit où se trouve vos fichiers de données.
@@ -522,4 +524,17 @@ ggplot(Fis, aes(x=rownames(Fis),y=meanFis)) +        # ggplot2 plot with confide
 ![image](https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/fdcb5d6d-5574-46de-819a-a623a411101d)
 
         
+
+
+On peut tester l'ecart à HW de chaque locus
+```r
+hw.test(lobster_gen)
+
+Et tester si He et Ho sont signicativement différents (ecart à HW)
+
+```r
+bartlett.test(list(div$Hexp, div$Hobs))
+t.test(div$Hexp, div$Hobs, pair = T, var.equal = TRUE, alter = "greater")
+
 Recommencer avec les données des gorgones
+
