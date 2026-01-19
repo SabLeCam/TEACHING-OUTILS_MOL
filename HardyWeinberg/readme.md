@@ -526,7 +526,7 @@ ggplot(Fis, aes(x=rownames(Fis),y=meanFis)) +        # ggplot2 plot with confide
  On peut également utiliser la fonction summary() pour obtenir les données de bases de la diversité génétique du jeu de données  
 
  ```r
- div<-summary(dataset)
+ div<-summary(lobster_gen)
 ```
 Et aussi faire des graphiques
 
