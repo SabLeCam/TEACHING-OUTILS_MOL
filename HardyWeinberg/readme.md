@@ -33,6 +33,9 @@ install.packages("scales")
 install.packages("poppr")
 install.packages("dartRverse")
 install.packages("pegas")
+install.package("lattice")
+install.packages("magrittr")
+
 ```
 
 
@@ -48,6 +51,7 @@ library("RColorBrewer")
 library("scales")
 library("dartRverse")
 library("pegas")
+library("lattice")
 ```
 Télécharger le fichiers de données sur votre ordinateur dans un dossier TPHW que vous aurez créer.
 Définir le dossier TPHW comme "working directory", l'endroit où se trouve vos fichiers de données.
@@ -540,8 +544,23 @@ On peut tester l'ecart à HW de chaque locus
 ```r
 hw.test(lobster_gen)
 ```
+Et tester l'écart à HW pour chaque population
 
-Et tester si He et Ho sont signicativement différents (ecart à HW)
+```r
+(nanhwe.pop <- seppop(seafan_gen) %>% lapply(hw.test, B = 1000))
+```
+
+Pour visualiser les loci des différentes populations qui ne sont pas à l'équilibre de Hardy Weinberg, on peut produire
+un graphique de type heatmap.
+
+```r
+(nanhwe.mat <- sapply(nanhwe.pop, "[", i = TRUE, j = 3))
+alpha  <- 0.05
+newmat <- nanhwe.mat
+newmat[newmat > alpha] <- 1
+levelplot(t(newmat))
+
+Et tester si He et Ho sont signicativement différents (ecart à HW) pour l'ensemble des populations
 
 ```r
 bartlett.test(list(div$Hexp, div$Hobs))
