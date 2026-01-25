@@ -554,7 +554,7 @@ Pour visualiser les loci des différentes populations qui ne sont pas à l'équi
 un graphique de type heatmap.
 
 ```r
-(hwe.mat <- sapply(nanhwe.pop, "[", i = TRUE, j = 3))
+(hwe.mat <- sapply(hwe.pop, "[", i = TRUE, j = 3))
 alpha  <- 0.05
 newmat <- hwe.mat
 newmat[newmat > alpha] <- 1
