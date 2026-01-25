@@ -547,16 +547,16 @@ hw.test(lobster_gen)
 Et tester l'écart à HW pour chaque population
 
 ```r
-(nanhwe.pop <- seppop(seafan_gen) %>% lapply(hw.test, B = 1000))
+(hwe.pop <- seppop(seafan_gen) %>% lapply(hw.test, B = 1000))
 ```
 
 Pour visualiser les loci des différentes populations qui ne sont pas à l'équilibre de Hardy Weinberg, on peut produire
 un graphique de type heatmap.
 
 ```r
-(nanhwe.mat <- sapply(nanhwe.pop, "[", i = TRUE, j = 3))
+(hwe.mat <- sapply(nanhwe.pop, "[", i = TRUE, j = 3))
 alpha  <- 0.05
-newmat <- nanhwe.mat
+newmat <- hwe.mat
 newmat[newmat > alpha] <- 1
 levelplot(t(newmat))
 
