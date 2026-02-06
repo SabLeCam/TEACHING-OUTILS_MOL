@@ -101,6 +101,6 @@ Pour répondre à cette question, regarder s’il y a beaucoup de valeurs sous l
 7)	Y-a-t’il des problèmes de classification ?
 Vous pouvez voir ces problèmes quand vous cliquez sous ‘show warnings only’ dans barcode analyses dans bold.
 
-8)	Discutez des résultats que vous avez obtenus pour l’identification des espèce des trois différents genres. Pour Salvelinus, discutez de la séparation entre les malma et les alpinus. Quelles sont les principales limites associées à cette méthode pour la découverte de la biodiversité ? 
+8)	Discutez des résultats que vous avez obtenus pour l’identification des espèce des quatre différents genres. Pour Salvelinus, discutez de la séparation entre les malma et les alpinus. Quelles sont les principales limites associées à cette méthode pour la découverte de la biodiversité ? 
 
 
