@@ -12,7 +12,7 @@ source("http://bioconductor.org/biocLite.R")
 
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
-BiocManager::install(version = "3.16")
+BiocManager::install(version = "3.22")
 `%>%` <- magrittr::`%>%`
 
 source("http://membres-timc.imag.fr/Olivier.Francois/POPSutilities.R")
