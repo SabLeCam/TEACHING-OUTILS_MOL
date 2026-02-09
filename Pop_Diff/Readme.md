@@ -425,6 +425,9 @@ ggplot(data = ind_coords, aes(x = Axis1, y = Axis2))+
   # custom labels
   labs(x = xlab, y = ylab)+
   ggtitle("Pink sea fan DAPC")
+
+ # Pour obtenir un résumé de l'analyse
+summary(dapc1)
 ```
 
 
