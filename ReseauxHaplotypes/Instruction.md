@@ -5,7 +5,7 @@
 <ins>Lecture</ins> : 
 <img width="387" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/d7f80ce5-89c9-4a9f-99bf-10dce47fe80c">
 
-http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0001913 
+
 
 <ins>Objectif</ins>: 
 Faire un réseau d’haplotype. Un réseau d’haplotypes permet d’explorer les liens qui existent entre les différents haplotypes présents dans une même espèce. 
