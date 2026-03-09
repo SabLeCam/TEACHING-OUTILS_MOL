@@ -227,8 +227,6 @@ nodelabels(bst, cex=0.8, adj=c(1,-0.6),frame="none")
 >Refaire pour le même exercice pour LDHB-nuc.fas ainsi que pour les deux fichiers de protéine
 
 
-```r
-#Télécharger MEGA
 
 
 ## Phylogénétique comparative
@@ -374,6 +372,7 @@ legend(x="bottomright", legend=c("C","CX","Outgroup","X"), border="black",
 
 
 
+## Sélection sur LDHA et LDHB
 
 
 
