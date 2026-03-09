@@ -376,7 +376,7 @@ legend(x="bottomright", legend=c("C","CX","Outgroup","X"), border="black",
 ## Sélection sur LDHA et LDHB
  # Télécharger MEGA
  Ouvrer chacun des fichiers alignés, Aller dans le menu  "Selection" et choisissez "test Tajima de neutralité", 
-Rapporter l'indice pS pour chacun des gènes. Rapporter cette statistique pour les X et les C séparément.
+Rapporter l'indice pS pour chacun des gènes. Rapporter cette statistique pour les X et les C séparément pour chacun des gènes LDHA et LDHB.
 
 
 
