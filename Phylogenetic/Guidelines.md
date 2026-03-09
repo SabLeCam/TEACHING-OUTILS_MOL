@@ -237,7 +237,7 @@ Utilisez le "scritp générique aa" pour obtenir les arbres phylogénétiques à
 
 >1.Décrivez les arbres produits par les deux méthodes. Est-ce-que les espèces sont bien séparées pour le gène mitochondrial ND5, le gène LDHA et LDHB ?
 
->2.Ou se situent les hybrides ?
+>2.Ou se situent les hybrides dans ces différents arbres ?
 
 >3.Rapporter les indices de diversité nucléotidiques (pi) pour chacune des espèces pour la LDHA et la LDHB ainsi que pour l’ensemble des séquences pour la LDHA et la LDHB.
 
