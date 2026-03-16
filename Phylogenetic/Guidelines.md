@@ -249,7 +249,8 @@ Utilisez le "scritp générique aa" pour obtenir les arbres phylogénétiques à
 >5. Est-ce-que le gène LDHA est plus variable que le gène LDHB au niveau nucléotidique? Au niveau des acides aminés ?
 
 >6. Est-ce-que les arbres pour la LDH sont congruents (concordent) avec la phylogénie du gène mitochondrial ND5 du complexe Daphnia pulex ?  Si non pourquoi ?
->7. Quelle type de sélection agit sur chacun des gènes ? 
+>7. Quelle type de sélection agit sur chacun des gènes ? Expliquer votre réponse en fonction des indices de pS et de Tajima.
+>8. Peut-on affirmer que le LDHB est un pseudogène ?
 
 
 ## Script générique pour les sequences nucléotidiques pour tous les gènes:
@@ -376,7 +377,7 @@ legend(x="bottomright", legend=c("C","CX","Outgroup","X"), border="black",
 ## Sélection sur LDHA et LDHB
  # Télécharger MEGA
  Ouvrer chacun des fichiers alignés, Aller dans le menu  "Selection" et choisissez "test Tajima de neutralité", 
-Rapporter l'indice pS pour chacun des gènes. Rapporter cette statistique pour les X et les C séparément pour chacun des gènes LDHA et LDHB.
+Rapporter l'indice pS ainsi que le D de Tajima pour les LDHA et LDHB. Rapporter cette statistique pour les X et les C séparément.
 
 
 
