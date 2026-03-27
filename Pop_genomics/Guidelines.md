@@ -163,7 +163,7 @@ Voici la carte d'échantillonnage des laminaires.
 <img width="752" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/32974c21-b99c-4b86-911f-87190221821b">
 </p>
 
->En quoi les zostères diffèrent-elles des laminaires au niveau de leur structure populationnelle ?
+>Quelles sont les principales différences entre ces deux espèces au niveau de leur structure populationnelle ? Quels facteurs permettent d'expliquer cette différence de structure ?
 
 
 
