@@ -211,7 +211,9 @@ levels(pop(microsat))<-c("TAD","IV","LUD", "SAM", "NOR" ,"PUR", "CAD", "GRA", "N
 
 
 >Indiquez à qui correspond le ‘call rate by locus’ et by individual et rapportez les changements du nombre de loci engendrés par ces différents filtres pour les laminaires.
+>
 Interprétez les PCA des laminaires et des zostères fait avec les microsat et les SNP pour chacune des espèces. Pourquoi les PCA fait avec les microsatellites diffèrent de ceux fait avec les SNP ?
+
 Quelles sont les principales différences entre ces deux espèces au niveau de leur structure populationnelle ? Quels facteurs permettent d'expliquer cette différence de structure ?
 
 
