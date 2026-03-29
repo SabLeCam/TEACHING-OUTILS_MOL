@@ -44,7 +44,9 @@ library(devtools)
 library(LEA)
 install.packages("plotly")
 library(plotly)
+install.packages("adegenet")
 library(adegenet)
+install.packages("ggplot2")
 library(ggplot2)
 ```
 
