@@ -152,6 +152,35 @@ gl.pcoa.plot(pc7, gl7, label = "ind", xaxis=1, yaxis=2)
 
 >Comment interprétez-vous le graphique obtenu ?
 
+### Analyse de la structure de la diversité génétique avec une PCA utilisant les microsatellites
+
+On importe les données microsat
+```r
+setwd("PATH_TO_TOUR_FILE")
+microsat<-read.genepop("zost24_genepop_gulf.gen")
+microsat
+levels(pop(microsat))<-c("Ile verte","Rimouski","LUD", "PLT", "Sept île" ,"BG", "SS", "CAJ", "SH")
+```
+```r
+tab_microsat<-tab(microsat, freq=TRUE, NA.method="mean")
+pca<-dudi.pca(tab_microsat, center=TRUE, scale=FALSE)
+#dudi.pca(df = tab_microsat, center = TRUE, scale = FALSE, scannf = FALSE, nf = 3)
+
+## plot showing groups
+s.class(pca$li, pop(microsat), col=rainbow(7))
+add.scatter.eig(pca1$eig,2,1,2,posi = "bottomright")
+```
+
+<p align="center"> 
+<img width="702" alt="image" src="https://github.com/SabLeCam/TEACHING-Conservation_genetics/assets/20643860/9cab7715-6b41-4ba6-b29d-0ca38dcef71e")
+</p>
+ 
+## JEU DE DONNEES SUR LES LAMINAIRES
+>Comparez les informations obtenues à partir des microsatellites et des SNPs
+>
+>Reprenez les mêmes commandes pour les laminaires (filename= Report_DSacc21-6007_3_moreOrders_SNP_2. Indmetafile= laminaria2.csv)
+>
+>Pour ces fichiers, il y a des populations qui proviennent des USA et d'autres régions du monde et que nous n'utiliserons pas dans l'analyse. Il faut donc les enlever avec cette fonction
 
 >Reprenez les mêmes commandes pour les laminaires (filename= Report_DSacc21-6007_3_moreOrders_SNP_2. Indmetafile= laminaria2.csv)
 >Pour ces fichiers, il y a des populations qui proviennent des USA et d'autres régions du monde et que nous n'utiliserons pas dans l'analyse. Il
