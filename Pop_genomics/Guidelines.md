@@ -195,6 +195,18 @@ Voici la carte d'échantillonnage des laminaires.
 <img width="752" alt="image" src="https://github.com/SabLeCam/OUTILS_MOL/assets/20643860/32974c21-b99c-4b86-911f-87190221821b">
 </p>
 
+
+
+
+
+## pour les microsatellites
+levels(pop(microsat))<-c("TAD","IV","LUD", "SAM", "NOR" ,"PUR", "CAD", "GRA", "NEW", "COL", "PAS", "BONDC", "BON", "CASCA", "COR", "R")
+
+
+
+
+
+
 >Indiquez à qui correspond le ‘call rate by locus’ et by individual et rapportez les changements du nombre de loci engendrés par ces différents filtres pour les laminaires.
 Interprétez les PCA des laminaires et des zostères fait avec les microsat et les SNP pour chacune des espèces. Pourquoi les PCA fait avec les microsatellites diffèrent de ceux fait avec les SNP ?
 Quelles sont les principales différences entre ces deux espèces au niveau de leur structure populationnelle ? Quels facteurs permettent d'expliquer cette différence de structure ?
