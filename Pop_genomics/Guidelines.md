@@ -32,15 +32,15 @@ Nous allons voir comment , au préalable de l'analyse de la diversité génétiq
 Voici les packages R que nous allons utiliser dans ce TP. Les installer (si nécessaire) puis les appeler
 
 ```r
-install.packages("dartR")
-library(dartR)
 install.packages("devtools")
-library(devtools)
 install.packages("BiocManager")
-BiocManager::install(c("SNPRelate", "qvalue"))
-#ATTENTION dites non aux mises à jour !
-install_github("green-striped-gecko/dartR")
-library(dartR)
+BiocManager::install("SNPRelate", force = TRUE)
+BiocManager::install("LEA", force = TRUE)
+devtools::install_github('green-striped-gecko/dartR.popgen@dev')
+devtools::install_github('green-striped-gecko/dartR.base@dev')
+library(dartRverse)
+library(devtools)
+library(LEA)
 install.packages("plotly")
 library(plotly)
 library(adegenet)
