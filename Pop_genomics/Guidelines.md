@@ -200,6 +200,8 @@ Voici la carte d'échantillonnage des laminaires.
 
 
 ## pour les microsatellites
+
+Pour le fichier microsat, il faut renommer les population une fois que vous avez importé les fichiers.
 levels(pop(microsat))<-c("TAD","IV","LUD", "SAM", "NOR" ,"PUR", "CAD", "GRA", "NEW", "COL", "PAS", "BONDC", "BON", "CASCA", "COR", "R")
 
 
