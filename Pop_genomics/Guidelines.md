@@ -167,7 +167,7 @@ pca<-dudi.pca(tab_microsat, center=TRUE, scale=FALSE)
 #dudi.pca(df = tab_microsat, center = TRUE, scale = FALSE, scannf = FALSE, nf = 3)
 
 ## plot showing groups
-s.class(pca$li, pop(microsat), col=rainbow(7))
+s.class(pca$li, pop(microsat), col=rainbow(9))
 add.scatter.eig(pca1$eig,2,1,2,posi = "bottomright")
 ```
 
